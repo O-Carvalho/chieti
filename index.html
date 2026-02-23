@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chieti Química</title>
+    <meta name="description" content="Chieti Química: Produtos químicos industriais especializados em mascarante de odor, tratamento de água e soluções ambientais de alta performance.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cor-laranja: #F3700C;
+            --cor-laranja-escuro: #D4420D;
+            --cor-branco: #FFFFFF;
+            --cor-fundo: #F9F9F9;
+            --cor-texto: #333333;
+            --cor-texto-secundario: #666666;
+            --cor-borda: #E8E8E8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--cor-texto);
+            background-color: var(--cor-branco);
+            line-height: 1.6;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--cor-branco);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--cor-laranja);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--cor-texto);
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--cor-laranja);
+        }
+
+        .btn-whatsapp-header {
+            background-color: var(--cor-laranja);
+            color: var(--cor-branco);
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-whatsapp-header:hover {
+            background-color: var(--cor-laranja-escuro);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.04) 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--cor-texto);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--cor-laranja);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--cor-texto-secundario);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .btn-primary {
+            background-color: var(--cor-laranja);
+            color: var(--cor-branco);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--cor-laranja-escuro);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 140, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--cor-laranja);
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--cor-laranja);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--cor-laranja);
+            color: var(--cor-branco);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* ===== PRODUTOS SECTION ===== */
+        .logohe {
+            width: 90%;
+            height: 40px;
+            display: flex;
+        }
+        .produtos {
+            padding: 4rem 0;
+            background-color: var(--cor-fundo);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--cor-texto);
+        }
+
+        .section-title span {
+            color: var(--cor-laranja);
+        }
+
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .produto-card {
+            background-color: var(--cor-branco);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .produto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .produto-imagem {
+            width: 100%;
+            height: 415px;
+            background: linear-gradient(135deg, #FF8C00 0%, #FFB347 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            overflow: hidden;
+        }
+
+        .produto-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .produto-info {
+            padding: 1.5rem;
+        }
+
+        .produto-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--cor-laranja);
+        }
+
+        .produto-info p {
+            color: var(--cor-texto-secundario);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .produto-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: rgba(255, 140, 0, 0.1);
+            color: var(--cor-laranja);
+            padding: 0.3rem 0.7rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ===== DIFERENCIAIS SECTION ===== */
+        .diferenciais {
+            padding: 4rem 0;
+        }
+
+        .diferenciais-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .diferenciais-texto h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--cor-texto);
+        }
+
+        .diferenciais-texto h2 span {
+            color: var(--cor-laranja);
+        }
+
+        .diferenciais-lista {
+            list-style: none;
+        }
+
+        .diferenciais-lista li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            color: var(--cor-texto-secundario);
+            font-size: 1rem;
+        }
+
+        .diferenciais-lista li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--cor-laranja);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .diferenciais-imagem {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.15) 0%, rgba(255, 140, 0, 0.08) 100%);
+            border-radius: 8px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 140, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .diferenciais-content {
+                grid-template-columns: 1fr;
+            }
+            .diferenciais-imagem {
+                height: 300px;
+            }
+        }
+
+        /* ===== INDICADORES SECTION ===== */
+        .indicadores {
+            background: linear-gradient(135deg, var(--cor-laranja) 0%, #FF7F00 100%);
+            padding: 4rem 0;
+            color: var(--cor-branco);
+        }
+
+        .indicadores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .indicador-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .indicador-item p {
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        /* ===== SETORES SECTION ===== */
+        .setores {
+            padding: 4rem 0;
+            background-color: var(--cor-fundo);
+        }
+
+        .setores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .setor-item {
+            background-color: var(--cor-branco);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--cor-laranja);
+            transition: all 0.3s ease;
+        }
+
+        .setor-item:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .setor-item h3 {
+            color: var(--cor-laranja);
+            margin-bottom: 0.5rem;
+        }
+
+        .setor-item p {
+            color: var(--cor-texto-secundario);
+            font-size: 0.95rem;
+        }
+
+        /* ===== FORMULARIO SECTION ===== */
+        .formulario-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.04) 100%);
+        }
+
+        .formulario-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .formulario-container h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .formulario-container p {
+            text-align: center;
+            color: var(--cor-texto-secundario);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--cor-texto);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--cor-borda);
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--cor-laranja);
+            box-shadow: 0 0 5px rgba(255, 140, 0, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .form-buttons button {
+            flex: 1;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--cor-texto);
+            color: var(--cor-branco);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--cor-laranja);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--cor-laranja);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .diferenciais-lista li {
+                padding: 0.8rem 0;
+                padding-left: 2rem;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#home" class="logo"><div class="logohe"><img src="images/logo_chieti.png"/></div></a>
+                <nav>
+                    <a href="produtos.html">Produtos</a>
+                    <a href="#diferenciais">Diferenciais</a>
+                    <a href="#setores">Setores</a>
+                    <a href="#contato">Contato</a>
+                </nav>
+                <a href="https://wa.me/5515997961818?text=Olá! Gostaria de conhecer mais sobre as soluções da Chieti Química." class="btn-whatsapp-header" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Soluções <span>Químicas Industriais</span> de <span>Alta Performance</span></h1>
+                <p>Tratamento de água, operação de caldeiras e produtos especializados para sua indústria.</p>
+                <a href="#contato" class="btn-primary">Solicitar Orçamento</a>
+                <a href="#produtos" class="btn-secondary">Conhecer Produtos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUTOS SECTION -->
+    <section class="produtos" id="produtos">
+        <div class="container">
+            <h2 class="section-title">Nossos <span>Produtos</span></h2>
+            <div class="produtos-grid">
+                <div class="produto-card">
+                    <a href="produto-mascarante-odor.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="produto-imagem"><img src="images/MascaranteDeOdor.png" /></div>
+                        <div class="produto-info">
+                        <h3>Mascarante de Odor</h3>
+                        <p>Solução eficaz para eliminação de odores indesejáveis em processos industriais.</p>
+                        <div class="produto-tags">
+                            <span class="tag">Ambiental</span>
+                            <span class="tag">Segurança</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="produto-card">
+                <a href="produto-pac.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                    <div class="produto-imagem"><img src="images/PolicloretoDeAluminioSVG.svg" /></div>
+                    <div class="produto-info">
+                        <h3>Policloreto de Alumínio (PAC)</h3>
+                        <p>Excelente coagulante para tratamento de água e efluentes.</p>
+                        <div class="produto-tags">
+                            <span class="tag">Água</span>
+                            <span class="tag">Efluentes</span>
+                        </div>
+                    </div>
+                </a>
+                </div>
+
+                <div class="produto-card">
+                    <a href="produto-sulfato-ferrico.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                       <div class="produto-imagem"><img src="images/SulfatoFerricoSVG.svg" /></div>
+                        <div class="produto-info">
+                            <h3>Sulfato Férrico</h3>
+                            <p>Coagulante especializado para tratamento de águas residuárias.</p>
+                            <div class="produto-tags">
+                                <span class="tag">Tratamento</span>
+                                <span class="tag">Industrial</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="produto-card">
+                    <a href="produto-sulfato-aluminio.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="produto-imagem"><img src="images/SulfatoDeAluminio.png" /></div>
+                        <div class="produto-info">
+                            <h3>Sulfato de Alumínio</h3>
+                            <p>Solução clássica para clarificação de águas de abastecimento.</p>
+                            <div class="produto-tags">
+                                <span class="tag">Abastecimento</span>
+                                <span class="tag">Água</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="produto-card">
+                    <a href="produto-soda-caustica.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="produto-imagem"><img src="images/SodaCaustica.png" /></div>
+                        <div class="produto-info">
+                            <h3>Soda Cáustica</h3>
+                            <p>Produto químico de múltiplas aplicações industriais.</p>
+                            <div class="produto-tags">
+                                <span class="tag">Múltiplo</span>
+                                <span class="tag">Industrial</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="produto-card">
+                    <a href="produto-polimeros.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                    <div class="produto-imagem"><img src="images/Polimeros.png" /></div>
+                    <div class="produto-info">
+                        <h3>Polímeros Aniônicos, Catiônicos e Não-Iônicos</h3>
+                        <p>Floculantes de alta performance para potabilização e tratamento.</p>
+                        <div class="produto-tags">
+                            <span class="tag">Floculação</span>
+                            <span class="tag">Premium</span>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+    <!-- BOTAO VER TODOS -->
+                <div style="grid-column: 1 / -1; text-align: center; padding: 2rem 0;">
+                    <a href="produtos.html" class="btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">
+                        Ver Todos os Produtos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS SECTION -->
+    <section class="diferenciais" id="diferenciais">
+        <div class="container">
+            <div class="diferenciais-content">
+                <div class="diferenciais-texto">
+                    <h2>Por que <span>Chieti</span>?</h2>
+                    <ul class="diferenciais-lista">
+                        <li><strong>Profissionalismo:</strong> Equipe especializada com vasta experiência no setor</li>
+                        <li><strong>Produtos de Qualidade:</strong> Formulações otimizadas para melhor performance</li>
+                        <li><strong>Suporte Técnico:</strong> Acompanhamento personalizado para cada aplicação</li>
+                        <li><strong>Inovação Contínua:</strong> Desenvolvimento de soluções específicas</li>
+                        <li><strong>Pontualidade:</strong> Entrega confiável e logística otimizada</li>
+                        <li><strong>Conformidade:</strong> Produtos alinhados com normas regulatórias</li>
+                    </ul>
+                </div>
+                <div class="diferenciais-imagem">
+                    🎯
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDICADORES SECTION -->
+    <section class="indicadores">
+        <div class="container">
+            <div class="indicadores-grid">
+                <div class="indicador-item">
+                    <h3>98%</h3>
+                    <p>Clientes Satisfeitos</p>
+                </div>
+                <div class="indicador-item">
+                    <h3>95%</h3>
+                    <p>Projetos Concluídos</p>
+                </div>
+                <div class="indicador-item">
+                    <h3>90%</h3>
+                    <p>Retorno de Clientes</p>
+                </div>
+                <div class="indicador-item">
+                    <h3>24/7</h3>
+                    <p>Suporte Técnico</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SETORES SECTION -->
+    <section class="setores" id="setores">
+        <div class="container">
+            <h2 class="section-title">Setores que <span>Atendemos</span></h2>
+            <div class="setores-grid">
+                <div class="setor-item">
+                    <h3>🏭 Indústria Alimentícia</h3>
+                    <p>Tratamento de água para bebidas, processamento e limpeza industrial.</p>
+                </div>
+                <div class="setor-item">
+                    <h3>🔧 Indústria de Papel e Celulose</h3>
+                    <p>Soluções especializadas para tratamento de efluentes e processos.</p>
+                </div>
+                <div class="setor-item">
+                    <h3>🏗️ Construção e Obras</h3>
+                    <p>Produtos para tratamento de água em canteiros e estações de trabalho.</p>
+                </div>
+                <div class="setor-item">
+                    <h3>💨 Gestão Ambiental</h3>
+                    <p>Mascarante de odor e produtos para conformidade ambiental.</p>
+                </div>
+                <div class="setor-item">
+                    <h3>⚡ Energia e Utilidades</h3>
+                    <p>Tratamento de água para caldeiras, torres e chillers.</p>
+                </div>
+                <div class="setor-item">
+                    <h3>🌿 Biológicos e ETE</h3>
+                    <p>Produtos para estações de tratamento biológico de efluentes.</p>
+                </div>
+                <div class="setor-item">
+                    <h3>♨️ Operação de Caldeira</h3>
+                    <p>Terceirização de mão de obra para operação de caldeiras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO SECTION -->
+    <section class="formulario-section" id="contato">
+        <div class="container">
+            <div class="formulario-container">
+                <h2>Entre em <span>Contato</span></h2>
+                <p>Preencha o formulário abaixo e nossos especialistas entrarão em contato para conversar sobre sua necessidade.</p>
+
+                <form id="contatoForm"
+                action="https://formspree.io/f/xzdakajy"
+                 method="POST"
+                >
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="empresa">Empresa *</label>
+                        <input type="text" id="empresa" name="empresa" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">Telefone com DDD *</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(15) 99796-1818" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensagem">Qual é sua necessidade? *</label>
+                        <textarea id="mensagem" name="mensagem" required></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-primary">Enviar Mensagem</button>
+                        <a href="https://wa.me/5515997961818?text=Olá! Gostaria de conhecer mais sobre as soluções da Chieti Química." class="btn-secondary" target="_blank" style="text-align:center; display:flex; align-items:center; justify-content:center;">WhatsApp</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Chieti Química</h3>
+                    <p>Soluções químicas industriais especializadas em mascarante de odor e tratamento de água.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>📞 (15) 99796-1818</p>
+                    <p>📧 contato@chietiquimica.com.br</p>
+                    <p>📍 Araçoiaba da Serra, São Paulo</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <a href="produtos.html">Produtos</a>
+                    <a href="#setores">Setores</a>
+                    <a href="#contato">Contato</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Chieti Química - Todos os direitos reservados | Desenvolvido com foco em conversão</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Validação e Envio do Formulário
+       
+
+        // Animação de scroll suave para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({behavior: 'smooth'});
+                }
+            });
+        });
+
+        // Adicionar classe de animação aos elementos quando visíveis
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar observador a cards e seções
+        document.querySelectorAll('.produto-card, .setor-item, .indicador-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
