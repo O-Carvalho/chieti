@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -1327,6 +1327,17 @@
             e.stopPropagation();
             document.getElementById('whatsappCard').style.display = 'none';
         }
+
+        // WhatsApp click event tracking
+        document.querySelectorAll('a[href*="wa.me"]').forEach(function (link) {
+            link.addEventListener('click', function () {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-17882030794/IDENTIFICADOR_WHATS'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 
