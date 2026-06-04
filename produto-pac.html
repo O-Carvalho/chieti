@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAC (Policloreto de Alumínio) - Chieti Química</title>
-    <link class="icon" type="image/png" href="images/favicon_logo.png">
+    <link rel="icon" type="image/png" href="images/favicon_logo.png">
     <meta name="description"
         content="PAC - Policloreto de Alumínio: Conheça como esse coagulante otimiza seu processo de tratamento de água com alta eficiência. Detalhes técnicos e aplicações.">
     <style>
@@ -44,7 +44,6 @@
             line-height: 1.6;
         }
 
-
         /* ===== HEADER ===== */
         header {
             background-color: var(--cor-branco);
@@ -73,6 +72,8 @@
             font-weight: bold;
             color: var(--cor-laranja);
             text-decoration: none;
+            display: flex;
+            align-items: center;
         }
 
         .logo span {
@@ -80,9 +81,47 @@
         }
 
         .logohe {
-            width: 90%;
             height: 40px;
             display: flex;
+        }
+
+        .logohe img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Menu hambúrguer */
+        .menu-toggle {
+            display: none;
+            width: 30px;
+            height: 22px;
+            flex-direction: column;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: var(--cor-texto);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9.5px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9.5px) rotate(-45deg);
         }
 
         nav {
@@ -168,21 +207,33 @@
             font-weight: 600;
             font-size: 0.9rem;
             transition: background-color 0.3s ease;
+            white-space: nowrap;
         }
 
         .btn-whatsapp-header:hover {
             background-color: var(--cor-laranja-escuro);
         }
 
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
+        /* Esconde o botão WhatsApp interno do nav no desktop */
+        nav .btn-whatsapp-header {
+            display: none;
+        }
 
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
+
+        /* Overlay do menu mobile */
+        .nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* ===== BREADCRUMB ===== */
@@ -222,7 +273,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            object-fit: cover;
             font-size: 6rem;
             color: rgba(255, 255, 255, 0.9);
             box-shadow: 0 10px 40px rgba(255, 140, 0, 0.2);
@@ -308,6 +358,7 @@
             display: inline-block;
             text-decoration: none;
             margin-right: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .btn-primary:hover {
@@ -332,20 +383,6 @@
         .btn-secondary:hover {
             background-color: var(--cor-laranja);
             color: var(--cor-branco);
-        }
-
-        @media (max-width: 768px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-imagem {
-                height: 300px;
-            }
-
-            .hero-conteudo h1 {
-                font-size: 1.8rem;
-            }
         }
 
         /* ===== CONTEUDO PRINCIPAL ===== */
@@ -400,10 +437,15 @@
         }
 
         /* ===== ESPECIFICAÇÕES ===== */
+        .tabela-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
         .tabela-specs {
             width: 100%;
             border-collapse: collapse;
-            margin: 2rem 0;
             background-color: var(--cor-branco);
             border: 1px solid var(--cor-borda);
             border-radius: 8px;
@@ -621,6 +663,8 @@
         .form-buttons button,
         .form-buttons a {
             flex: 1;
+            text-align: center;
+            margin-right: 0;
         }
 
         /* ===== FOOTER ===== */
@@ -648,6 +692,7 @@
             text-decoration: none;
             margin-bottom: 0.5rem;
             font-size: 0.95rem;
+            display: block;
         }
 
         .footer-section a:hover {
@@ -843,9 +888,159 @@
             font-size: 1.3rem;
         }
 
+        /* ===================================================== */
+        /* ================ RESPONSIVIDADE ===================== */
+        /* ===================================================== */
+
+        /* Tablet e mobile com menu hambúrguer */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            /* Esconde o botão WhatsApp solto do header no mobile */
+            .header-content>.btn-whatsapp-header {
+                display: none;
+            }
+
+            /* Mostra o botão WhatsApp dentro do menu lateral */
+            nav .btn-whatsapp-header {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav {
+                display: flex;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--cor-branco);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 5rem 1.5rem 2rem;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+                transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 1050;
+                overflow-y: auto;
+                gap: 1.2rem;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            .dropdown {
+                width: 100%;
+                display: block;
+            }
+
+            .dropdown-content {
+                visibility: visible;
+                opacity: 1;
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                min-width: auto;
+                margin-top: 0.5rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                padding-left: 1rem;
+            }
+
+            .dropdown.open .dropdown-content {
+                max-height: 300px;
+            }
+        }
+
+        /* Layout do hero empilha */
         @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-imagem {
+                height: 320px;
+            }
+
+            .hero-conteudo h1 {
+                font-size: 1.9rem;
+            }
+
             .form-buttons {
                 flex-direction: column;
+            }
+        }
+
+        /* Ajustes finos celular pequeno */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1.2rem;
+            }
+
+            body {
+                font-size: 0.95rem;
+            }
+
+            .hero-imagem {
+                height: 260px;
+            }
+
+            .hero-conteudo h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-conteudo p {
+                font-size: 1rem;
+            }
+
+            .secao h2 {
+                font-size: 1.6rem;
+            }
+
+            .caracteristica-item {
+                padding: 1.5rem;
+            }
+
+            .aplicacoes {
+                grid-template-columns: 1fr;
+            }
+
+            .tabela-specs {
+                font-size: 0.9rem;
+            }
+
+            .tabela-specs th,
+            .tabela-specs td {
+                padding: 0.7rem;
+            }
+
+            .ete-highlight-box {
+                padding: 1.8rem 1.2rem;
+            }
+
+            .formulario-container {
+                padding: 1.5rem;
+            }
+
+            .btn-primary {
+                width: 100%;
+                text-align: center;
+                margin-right: 0;
+            }
+
+            .whatsapp-widget {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-card {
+                width: 280px;
             }
         }
     </style>
@@ -858,9 +1053,12 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">
-                    <div class="logohe"><img src="images/logo_chieti.png" /></div>
+                    <div class="logohe"><img src="images/logo_chieti.png" alt="Logo Chieti Química" /></div>
                 </a>
-                <nav>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <nav id="mainNav">
                     <a href="index.html">Home</a>
                     <div class="dropdown">
                         <span class="nav-item">Serviços <span style="font-size: 0.7rem;">▼</span></span>
@@ -873,12 +1071,17 @@
                     <a href="produtos.html">Produtos</a>
                     <a href="index.html#setores">Setores</a>
                     <a href="index.html#contato">Contato</a>
+                    <a href="https://wa.me/5515997961818?text=Olá! Gostaria de saber mais sobre o PAC da Chieti Química."
+                        class="btn-whatsapp-header" target="_blank">WhatsApp</a>
                 </nav>
                 <a href="https://wa.me/5515997961818?text=Olá! Gostaria de saber mais sobre o PAC da Chieti Química."
                     class="btn-whatsapp-header" target="_blank">WhatsApp</a>
             </div>
         </div>
     </header>
+
+    <!-- overlay do menu mobile -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- BREADCRUMB -->
     <div class="breadcrumb">
@@ -893,7 +1096,8 @@
         <div class="container">
             <a href="produtos.html" class="voltar-produtos">← Voltar para Produtos</a>
             <div class="hero-grid">
-                <div class="hero-imagem"><img src="images/PolicloretoDeAluminioSVG.svg" /></div>
+                <div class="hero-imagem"><img src="images/PolicloretoDeAluminioSVG.svg"
+                        alt="PAC - Policloreto de Alumínio" /></div>
                 <div class="hero-conteudo">
                     <h1>PAC - <span>Policloreto de Alumínio</span></h1>
                     <p>Coagulante de alta performance para tratamento eficiente de água e efluentes com excelente
@@ -962,40 +1166,42 @@
             <!-- ESPECIFICAÇÕES TÉCNICAS -->
             <div class="secao">
                 <h2><span>Especificações</span> Técnicas</h2>
-                <table class="tabela-specs">
-                    <tr>
-                        <th>Parâmetro</th>
-                        <th>Valor/Características</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Aspecto</strong></td>
-                        <td>Líquido amarelado/incolor</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Concentração de Al₂O₃</strong></td>
-                        <td>7-13% em massa</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Densidade</strong></td>
-                        <td>1.15-1.30 g/cm³</td>
-                    </tr>
-                    <tr>
-                        <td><strong>pH (solução 1%)</strong></td>
-                        <td>3.5-5.0</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Faixa de pH de Operação</strong></td>
-                        <td>4.0-8.5</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Dose Típica</strong></td>
-                        <td>5-25 mg/L (conforme aplicação)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Embalagem</strong></td>
-                        <td>20L, 50L, 200L ou a granel</td>
-                    </tr>
-                </table>
+                <div class="tabela-wrapper">
+                    <table class="tabela-specs">
+                        <tr>
+                            <th>Parâmetro</th>
+                            <th>Valor/Características</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Aspecto</strong></td>
+                            <td>Líquido amarelado/incolor</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Concentração de Al₂O₃</strong></td>
+                            <td>7-13% em massa</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Densidade</strong></td>
+                            <td>1.15-1.30 g/cm³</td>
+                        </tr>
+                        <tr>
+                            <td><strong>pH (solução 1%)</strong></td>
+                            <td>3.5-5.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Faixa de pH de Operação</strong></td>
+                            <td>4.0-8.5</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dose Típica</strong></td>
+                            <td>5-25 mg/L (conforme aplicação)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Embalagem</strong></td>
+                            <td>20L, 50L, 200L ou a granel</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
             <!-- APLICAÇÕES -->
@@ -1177,6 +1383,48 @@
     </div>
 
     <script>
+        // Menu hambúrguer
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        const navOverlay = document.getElementById('navOverlay');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        navOverlay.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            mainNav.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Dropdown acordeão no mobile
+        document.querySelectorAll('.dropdown .nav-item').forEach(item => {
+            item.addEventListener('click', e => {
+                if (window.innerWidth <= 900) {
+                    e.preventDefault();
+                    item.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        // Fechar menu ao clicar nos links
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 900) {
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    navOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // WhatsApp widget
         function toggleWhatsApp() {
             const card = document.getElementById('whatsappCard');
             card.style.display = card.style.display === 'block' ? 'none' : 'block';

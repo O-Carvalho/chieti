@@ -12,10 +12,10 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultoria e Licenciamento Ambiental na RMC e Interior de SP - Chieti Química</title>
+    <title>Polímeros Aniônicos, Catiônicos e Não-Iônicos - Chieti Química | Floculantes</title>
     <link rel="icon" type="image/png" href="images/favicon_logo.png">
     <meta name="description"
-        content="Licenciamento ambiental e consultoria especializada na Região Metropolitana de Campinas (RMC) e interior de SP. Gestão de resíduos, outorgas e sustentabilidade industrial.">
+        content="Polímeros Chieti Química: Floculantes aniônicos, catiônicos e não-iônicos para aceleração de decantação, desaguamento de lodo e clarificação de efluentes.">
     <style>
         * {
             margin: 0;
@@ -82,6 +82,45 @@
             width: 90%;
             height: 40px;
             display: flex;
+        }
+
+        .logohe img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Menu hambúrguer */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--cor-texto);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9.5px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9.5px) rotate(-45deg);
         }
 
         nav {
@@ -173,62 +212,25 @@
             background-color: var(--cor-laranja-escuro);
         }
 
-        /* Botão WhatsApp dentro do nav só aparece no mobile */
-        nav .btn-whatsapp-header {
-            display: none;
-        }
-
-        /* ========================================
-           BOTÃO HAMBÚRGUER (mobile)
-        ======================================== */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 22px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 1100;
-            padding: 0;
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background-color: var(--cor-texto);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: translateY(9.5px) rotate(45deg);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-9.5px) rotate(-45deg);
+        /* Botão WhatsApp fora da nav (desktop) */
+        .header-content>.btn-whatsapp-header {
+            display: inline-block;
         }
 
         /* Overlay do menu mobile */
         .nav-overlay {
+            display: none;
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
             z-index: 1040;
         }
 
         .nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
+            display: block;
         }
 
         /* ===== BREADCRUMB ===== */
@@ -248,10 +250,10 @@
             text-decoration: underline;
         }
 
-        /* ===== HERO DO SERVIÇO ===== */
-        .servico-hero {
+        /* ===== HERO DO PRODUTO ===== */
+        .produto-hero {
             background: linear-gradient(135deg, rgba(255, 140, 0, 0.1) 0%, rgba(255, 140, 0, 0.05) 100%);
-            padding: 4rem 0;
+            padding: 3rem 0;
         }
 
         .hero-grid {
@@ -261,41 +263,29 @@
             align-items: center;
         }
 
-        /* ===== HERO IMAGEM COM OVERLAY ÂMBAR ===== */
         .hero-imagem {
-            position: relative;
+            background: linear-gradient(135deg, #FF8C00 0%, #FFB347 100%);
             border-radius: 8px;
-            height: 400px;
+            height: 560px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 40px rgba(255, 140, 0, 0.2);
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(243, 112, 12, 0.15);
         }
 
         .hero-imagem img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
-            filter: saturate(1.05) contrast(1.02);
-        }
-
-        /* Overlay laranja/âmbar da marca */
-        .hero-imagem::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg,
-                    rgba(243, 112, 12, 0.45) 0%,
-                    rgba(255, 179, 71, 0.25) 50%,
-                    rgba(212, 66, 13, 0.35) 100%);
-            mix-blend-mode: multiply;
-            pointer-events: none;
         }
 
         .hero-conteudo h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--cor-texto);
             margin-bottom: 1rem;
-            line-height: 1.3;
         }
 
         .hero-conteudo h1 span {
@@ -355,7 +345,7 @@
         .btn-primary {
             background-color: var(--cor-laranja);
             color: var(--cor-branco);
-            padding: 1rem 2.5rem;
+            padding: 1rem 2rem;
             border: none;
             border-radius: 5px;
             font-size: 1rem;
@@ -365,13 +355,31 @@
             display: inline-block;
             text-decoration: none;
             margin-right: 1rem;
-            box-shadow: 0 4px 15px rgba(243, 112, 12, 0.2);
+            margin-top: 0.5rem;
         }
 
         .btn-primary:hover {
             background-color: var(--cor-laranja-escuro);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 66, 13, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--cor-laranja);
+            padding: 1rem 2rem;
+            border: 2px solid var(--cor-laranja);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--cor-laranja);
+            color: var(--cor-branco);
         }
 
         /* ===== CONTEUDO PRINCIPAL ===== */
@@ -398,104 +406,187 @@
 
         .secao p {
             color: var(--cor-texto-secundario);
-            font-size: 1.05rem;
+            font-size: 1rem;
             line-height: 1.8;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
-        /* ===== DIFERENCIAIS GRID ===== */
-        .grid-diferenciais {
+        /* ===== CARACTERÍSTICAS ===== */
+        .caracteristicas {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin: 2rem 0;
         }
 
-        .diferencial-card {
+        .caracteristica-item {
             background-color: var(--cor-fundo);
-            padding: 2.5rem 2rem;
+            padding: 2rem;
             border-radius: 8px;
-            border-top: 4px solid var(--cor-laranja);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
+            border-left: 4px solid var(--cor-laranja);
         }
 
-        .diferencial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .diferencial-card h3 {
-            color: var(--cor-laranja-escuro);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .diferencial-card p {
-            color: var(--cor-texto-secundario);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* ===== CHECKLIST CONSULTORIA ===== */
-        .checklist-consultoria {
-            list-style: none;
-            margin: 2rem 0;
-        }
-
-        .checklist-consultoria li {
-            padding: 0.8rem 0;
-            padding-left: 2.5rem;
-            position: relative;
-            color: var(--cor-texto-secundario);
-            font-size: 1.05rem;
-            border-bottom: 1px solid var(--cor-borda);
-        }
-
-        .checklist-consultoria li:last-child {
-            border-bottom: none;
-        }
-
-        .checklist-consultoria li:before {
-            content: "🌿";
-            position: absolute;
-            left: 0;
+        .caracteristica-item h3 {
+            color: var(--cor-laranja);
+            margin-bottom: 0.5rem;
             font-size: 1.2rem;
         }
 
-        /* ===== SETORES ===== */
-        .setores-container {
+        .caracteristica-item p {
+            color: var(--cor-texto-secundario);
+            font-size: 0.95rem;
+        }
+
+        /* ===== ESPECIFICAÇÕES ===== */
+        .tabela-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 2rem 0;
+        }
+
+        .tabela-specs {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--cor-branco);
+            border: 1px solid var(--cor-borda);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .tabela-specs th {
+            background-color: var(--cor-laranja);
+            color: var(--cor-branco);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tabela-specs td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--cor-borda);
+        }
+
+        .tabela-specs tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tabela-specs tr:nth-child(even) {
+            background-color: var(--cor-fundo);
+        }
+
+        /* ===== APLICAÇÕES ===== */
+        .aplicacoes {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
             margin: 2rem 0;
         }
 
-        .setor-card {
-            background: #fff;
-            border: 1px solid var(--cor-borda);
+        .aplicacao-item {
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.1) 0%, rgba(255, 140, 0, 0.05) 100%);
             padding: 1.5rem;
             border-radius: 8px;
             text-align: center;
-            font-weight: 600;
-            color: var(--cor-texto);
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
 
-        .setor-card:hover {
-            border-color: var(--cor-laranja);
+        .aplicacao-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 140, 0, 0.2);
+        }
+
+        .aplicacao-icone {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .aplicacao-item h3 {
             color: var(--cor-laranja);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
-        .setor-icon {
-            font-size: 2.2rem;
-            margin-bottom: 0.8rem;
-            display: block;
+        .aplicacao-item p {
+            color: var(--cor-texto-secundario);
+            font-size: 0.9rem;
+        }
+
+        /* ===== BENEFÍCIOS ===== */
+        .beneficios-lista {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .beneficios-lista li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            color: var(--cor-texto-secundario);
+            font-size: 1rem;
+            border-bottom: 1px solid var(--cor-borda);
+        }
+
+        .beneficios-lista li:last-child {
+            border-bottom: none;
+        }
+
+        .beneficios-lista li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--cor-laranja);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* ===== ETE HIGHLIGHT BOX ===== */
+        .ete-highlight-box {
+            background: linear-gradient(135deg, rgba(243, 112, 12, 0.07) 0%, rgba(243, 112, 12, 0.02) 100%);
+            border: 2px dashed var(--cor-laranja);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            box-shadow: 0 4px 20px rgba(243, 112, 12, 0.05);
+        }
+
+        .ete-highlight-box h3 {
+            color: var(--cor-laranja-escuro);
+            font-size: 1.4rem;
+            margin: 0;
+        }
+
+        .ete-highlight-box p {
+            color: var(--cor-texto-secundario);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+            max-width: 650px;
+        }
+
+        .ete-highlight-box .btn-highlight {
+            background-color: var(--cor-laranja);
+            color: var(--cor-branco);
+            padding: 0.9rem 2.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(243, 112, 12, 0.2);
+        }
+
+        .ete-highlight-box .btn-highlight:hover {
+            background-color: var(--cor-laranja-escuro);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 66, 13, 0.3);
         }
 
         /* ===== FORMULÁRIO ===== */
@@ -574,6 +665,8 @@
         .form-buttons button,
         .form-buttons a {
             flex: 1;
+            text-align: center;
+            margin-right: 0;
         }
 
         /* ===== FOOTER ===== */
@@ -603,6 +696,10 @@
             font-size: 0.95rem;
         }
 
+        .footer-section a {
+            display: block;
+        }
+
         .footer-section a:hover {
             color: var(--cor-laranja);
         }
@@ -613,6 +710,23 @@
             text-align: center;
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.6);
+        }
+
+        .voltar-produtos {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.7rem 1.5rem;
+            background-color: var(--cor-fundo);
+            color: var(--cor-laranja);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .voltar-produtos:hover {
+            background-color: var(--cor-laranja);
+            color: var(--cor-branco);
         }
 
         /* Floating WhatsApp Widget */
@@ -779,12 +893,14 @@
             font-size: 1.3rem;
         }
 
-        /* ========================================
-           RESPONSIVIDADE
-        ======================================== */
+        /* ===== RESPONSIVIDADE ===== */
         @media (max-width: 1024px) {
             .container {
                 padding: 0 1.5rem;
+            }
+
+            nav {
+                gap: 1.5rem;
             }
 
             .hero-grid {
@@ -792,138 +908,130 @@
             }
 
             .hero-conteudo h1 {
-                font-size: 2.1rem;
+                font-size: 2.2rem;
             }
         }
 
-        /* ===== TABLET / MOBILE (<= 900px) ===== */
         @media (max-width: 900px) {
             .menu-toggle {
                 display: flex;
             }
 
-            .header-content {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                gap: 1rem;
-                flex-wrap: nowrap;
-            }
-
             .logohe {
-                width: auto;
-                max-width: 160px;
+                width: 160px;
+                height: auto;
             }
 
-            .logohe img {
-                max-height: 40px;
-                width: auto;
-            }
-
-            /* Header WhatsApp (fora do nav) some no mobile */
             .header-content>.btn-whatsapp-header {
                 display: none;
             }
 
-            /* Nav vira menu lateral */
             nav {
+                display: flex;
                 position: fixed;
                 top: 0;
                 right: -100%;
                 width: 80%;
                 max-width: 320px;
                 height: 100vh;
-                background-color: var(--cor-branco);
+                height: 100dvh;
+                background: var(--cor-branco);
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0;
                 padding: 5rem 1.5rem 2rem;
                 box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
                 transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
                 z-index: 1050;
                 overflow-y: auto;
+                gap: 0;
             }
 
-            nav.active {
+            nav.open {
                 right: 0;
             }
 
-            nav a,
-            .nav-item {
+            nav>a {
                 width: 100%;
                 padding: 0.9rem 0;
                 border-bottom: 1px solid var(--cor-borda);
-                font-size: 1rem;
             }
 
-            .dropdown {
+            nav .dropdown {
                 width: 100%;
                 display: block;
+                border-bottom: 1px solid var(--cor-borda);
+            }
+
+            .nav-item {
+                display: block;
+                padding: 0.9rem 0;
+                width: 100%;
             }
 
             .dropdown-content {
+                position: static;
                 visibility: visible;
                 opacity: 1;
-                position: static;
                 transform: none;
                 box-shadow: none;
                 border: none;
                 min-width: 100%;
-                margin: 0;
-                padding-left: 1rem;
+                margin-top: 0;
+                background-color: var(--cor-fundo);
+                border-radius: 0;
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.3s ease;
             }
 
             .dropdown.open .dropdown-content {
-                max-height: 500px;
+                max-height: 300px;
+            }
+
+            .dropdown:hover .dropdown-content {
+                transform: none;
             }
 
             .dropdown-content a {
-                border-bottom: 1px solid var(--cor-borda);
-                font-size: 0.9rem;
-                padding: 0.7rem 0.5rem;
+                padding-left: 1.5rem;
             }
 
-            nav .btn-whatsapp-header {
-                display: inline-block;
+            .btn-whatsapp-nav {
+                display: block;
                 width: 100%;
                 text-align: center;
-                margin-top: 1rem;
+                margin-top: 1.5rem;
             }
 
-            /* Hero empilha */
             .hero-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .hero-imagem {
-                height: 280px;
-                order: -1;
+                height: 250px;
             }
 
             .hero-conteudo h1 {
-                font-size: 2rem;
-            }
-        }
-
-        /* ===== MOBILE (<= 768px) ===== */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1.2rem;
-            }
-
-            .servico-hero {
-                padding: 2.5rem 0;
-            }
-
-            .hero-conteudo h1 {
-                font-size: 1.7rem;
+                font-size: 1.8rem;
             }
 
             .hero-conteudo p {
                 font-size: 1rem;
+            }
+
+            .btn-primary {
+                display: block;
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+
+            .btn-secondary {
+                display: block;
+                width: 100%;
+                text-align: center;
             }
 
             .conteudo-principal {
@@ -935,68 +1043,29 @@
             }
 
             .secao h2 {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
 
-            .grid-diferenciais {
-                grid-template-columns: 1fr;
-                gap: 1.2rem;
-            }
-
-            .diferencial-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .btn-primary {
-                margin-right: 0;
-                width: 100%;
-                text-align: center;
+            .tabela-specs th,
+            .tabela-specs td {
+                padding: 0.75rem;
+                font-size: 0.9rem;
             }
 
             .form-buttons {
                 flex-direction: column;
             }
 
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-
-        /* ===== MOBILE PEQUENO (<= 480px) ===== */
-        @media (max-width: 480px) {
-            body {
-                font-size: 0.95rem;
+            .formulario-container {
+                padding: 1.5rem;
             }
 
-            .container {
-                padding: 0 1rem;
-            }
-
-            .hero-conteudo h1 {
+            .formulario-container h2 {
                 font-size: 1.5rem;
             }
 
-            .hero-tag {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .secao h2 {
-                font-size: 1.4rem;
-            }
-
-            .secao p,
-            .checklist-consultoria li {
-                font-size: 0.98rem;
-            }
-
-            .hero-imagem {
-                height: 220px;
-            }
-
-            .formulario-container {
-                padding: 1.5rem 1.2rem;
+            .ete-highlight-box {
+                padding: 1.8rem 1.2rem;
             }
 
             .whatsapp-widget {
@@ -1006,29 +1075,57 @@
 
             .whatsapp-card {
                 width: calc(100vw - 40px);
-                right: 0;
+                max-width: 320px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-conteudo h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-tags {
+                gap: 0.5rem;
+            }
+
+            .hero-tag {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .secao h2 {
+                font-size: 1.35rem;
+            }
+
+            .caracteristica-item,
+            .aplicacao-item {
+                padding: 1.2rem;
+            }
+
+            .ete-highlight-box h3 {
+                font-size: 1.2rem;
+            }
+
+            .ete-highlight-box p {
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <!-- HEADER -->
+    <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
     <header>
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">
-                    <div class="logohe"><img src="images/logo_chieti.png" /></div>
+                    <div class="logohe"><img src="images/logo_chieti.png" alt="Chieti Química" /></div>
                 </a>
-
-                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-
-                <nav id="mainNav">
+                <nav>
                     <a href="index.html">Home</a>
                     <div class="dropdown">
                         <span class="nav-item">Serviços <span style="font-size: 0.7rem;">▼</span></span>
@@ -1041,134 +1138,176 @@
                     <a href="produtos.html">Produtos</a>
                     <a href="index.html#setores">Setores</a>
                     <a href="index.html#contato">Contato</a>
-                    <a href="https://wa.me/5515997961818?text=Olá! Gostaria de falar com um especialista sobre consultoria ou licenciamento ambiental."
-                        class="btn-whatsapp-header" target="_blank">WhatsApp</a>
+                    <a href="https://wa.me/5515997961818?text=Olá! Gostaria de saber mais sobre os Polímeros da Chieti Química."
+                        class="btn-whatsapp-header btn-whatsapp-nav" target="_blank">WhatsApp</a>
                 </nav>
-
-                <a href="https://wa.me/5515997961818?text=Olá! Gostaria de falar com um especialista sobre consultoria ou licenciamento ambiental."
+                <a href="https://wa.me/5515997961818?text=Olá! Gostaria de saber mais sobre os Polímeros da Chieti Química."
                     class="btn-whatsapp-header" target="_blank">WhatsApp</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- Overlay do menu mobile -->
-    <div class="nav-overlay" id="navOverlay"></div>
-
-    <!-- BREADCRUMB -->
     <div class="breadcrumb">
         <div class="container">
-            <a href="index.html">Home</a> / <span>Serviços</span> / <span>Consultoria Ambiental</span>
+            <a href="index.html">Home</a> / <a href="produtos.html">Produtos</a> / <span>Polímeros</span>
         </div>
     </div>
 
-    <!-- HERO DO SERVIÇO -->
-    <section class="servico-hero">
+    <section class="produto-hero">
         <div class="container">
+            <a href="produtos.html" class="voltar-produtos">← Voltar para Produtos</a>
             <div class="hero-grid">
+                <div class="hero-imagem"><img src="images/Polimeros.png" alt="Polímeros Chieti Química" /></div>
                 <div class="hero-conteudo">
+                    <h1>Polímeros <span>Aniônicos, Catiônicos e Não-Iônicos</span></h1>
+                    <p>Floculantes de alta performance em pó ou emulsão para acelerar a decantação de sólidos, clarificação de efluentes industriais e desidratação (desaguamento) de lodo em centrífugas, filtros-prensa e decantadores.</p>
                     <div class="hero-tags">
-                        <span class="hero-tag">Licenciamento</span>
-                        <span class="hero-tag">Gestão de Resíduos</span>
-                        <span class="hero-tag">Atuação na RMC</span>
+                        <span class="hero-tag">Floculantes</span>
+                        <span class="hero-tag">Tratamento de Lodo</span>
+                        <span class="hero-tag">Decantação Rápida</span>
                     </div>
-                    <h1>Consultoria e Licenciamento Ambiental no <span>Interior de SP e RMC</span></h1>
-                    <p>Regularize seu empreendimento industrial. Com anos de experiência em consultoria ambiental,
-                        oferecemos uma assessoria técnica completa para processos sustentáveis, CADRI, outorgas e
-                        gerenciamento de resíduos industriais.</p>
-
-                    <!-- Trust badge -->
                     <div class="trust-badge-container">
                         <div class="trust-badge">
                             <span>🛡️</span>
                             <span><strong>Suporte Técnico 24/7</strong></span>
                         </div>
                     </div>
-
-                    <a href="#contato" class="btn-primary">Falar com um Especialista</a>
-                </div>
-                <div class="hero-imagem">
-                    <img src="images/hero-consultoria-ambiental.png" alt="Consultoria e Licenciamento Ambiental">
+                    <a href="#contato" class="btn-primary">Solicitar Orçamento</a>
+                    <a href="https://wa.me/5515997961818?text=Olá! Gostaria de saber mais sobre os Polímeros da Chieti Química."
+                        class="btn-primary" target="_blank">Falar via WhatsApp</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTEÚDO PRINCIPAL -->
     <section class="conteudo-principal">
         <div class="container">
-
-            <!-- MISSÃO SUSTENTÁVEL -->
             <div class="secao">
-                <h2>Processos Sustentáveis e Legalizados</h2>
-                <p>Nossa missão é tornar os processos de sua empresa sustentáveis e plenamente adequados perante as leis
-                    brasileiras. A conformidade jurídica ambiental é mais do que evitar multas: é otimizar recursos,
-                    melhorar a gestão de riscos e abrir portas para certificações internacionais e novos mercados.</p>
-                <p>Com forte presença técnica na Região Metropolitana de Campinas (RMC) e em todo o interior de São
-                    Paulo, acompanhamos o cliente em todas as instâncias, desde o diagnóstico inicial de impacto até a
-                    renovação e obtenção de licenças ambientais complexas junto à CETESB, DAEE, IBAMA e prefeituras.</p>
-            </div>
-
-            <!-- DIFERENCIAL INTEGRADO -->
-            <div class="secao">
-                <h2>Portfólio de Soluções em Consultoria</h2>
-                <div class="grid-diferenciais">
-                    <div class="diferencial-card">
-                        <h3>📋 Licenciamento Ambiental</h3>
-                        <p>Assessoria completa nas fases de Licença Prévia (LP), Licença de Instalação (LI) e Licença de
-                            Operação (LO). Cuidamos da elaboração de relatórios, estudos e acompanhamento integral dos
-                            trâmites.</p>
-                    </div>
-                    <div class="diferencial-card">
-                        <h3>♻️ Gestão de Resíduos</h3>
-                        <p>Implantação do PGRS (Plano de Gerenciamento de Resíduos Sólidos), emissão de CADRI
-                            (Certificado de Movimentação de Resíduos de Interesse Ambiental) e otimização da cadeia de
-                            destinação final.</p>
-                    </div>
-                    <div class="diferencial-card">
-                        <h3>💧 Outorgas de Uso de Água</h3>
-                        <p>Processamento de solicitações de outorgas de poços profundos ou captações superficiais junto
-                            ao DAEE para suprimento hídrico seguro das instalações industriais.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ESCOPO TÉCNICO -->
-            <div class="secao">
-                <h2>Serviços de Consultoria para sua Indústria</h2>
-                <p>Com nossa expertise em consultoria ambiental, oferecemos uma ampla gama de serviços especializados:
-                </p>
-                <ul class="checklist-consultoria">
-                    <li><strong>CADRI (CETESB):</strong> Emissão e renovação de certificados para transporte e
-                        destinação de resíduos perigosos.</li>
-                    <li><strong>PGRS e PGRSS:</strong> Elaboração e auditoria interna de planos de resíduos industriais
-                        e de saúde.</li>
-                    <li><strong>Estudos de Impacto (EAS/RAP):</strong> Estudos ambientais de baixa e média complexidade
-                        para novos empreendimentos.</li>
-                    <li><strong>Outorgas e Dispensa de Outorga:</strong> Regularização de captações e lançamentos
-                        hídricos industriais.</li>
-                    <li><strong>Auditorias Ambientais de Conformidade:</strong> Diagnósticos preventivos sobre passivos
-                        e riscos regulatórios.</li>
+                <h2>O que são os <span>Polímeros</span>?</h2>
+                <p>Os polímeros industriais são macromoléculas solúveis em água com alta carga elétrica ativa, utilizados como floculantes no tratamento de água e efluentes. Eles atuam após o processo de coagulação, aglomerando os microflocos formados em flocos maiores e muito mais pesados, o que acelera drasticamente a velocidade de decantação ou flotação física.</p>
+                <p>A Chieti Química oferece uma linha completa de polímeros em emulsão ou pó, classificados em três categorias essenciais:</p>
+                <ul>
+                    <li><strong>Polímeros Catiônicos:</strong> Apresentam carga positiva. São altamente recomendados para desidratação (desaguamento) de lodos orgânicos biológicos em estações de tratamento.</li>
+                    <li><strong>Polímeros Aniônicos:</strong> Apresentam carga negativa. São amplamente utilizados em processos de clarificação primária físico-química e efluentes industriais com cargas minerais.</li>
+                    <li><strong>Polímeros Não-Iônicos:</strong> Apresentam neutralidade de carga. Ideais para faixas extremas de pH ou em efluentes complexos onde floculantes carregados perdem eficiência.</li>
                 </ul>
             </div>
 
-            <!-- SETORES ATENDIDOS -->
             <div class="secao">
-                <h2>Setores Atendidos com <span>Excelência</span></h2>
-                <p>Garantimos a conformidade legal nos seguintes setores industriais críticos:</p>
-                <div class="setores-container">
-                    <div class="setor-card">
-                        <span class="setor-icon">🏭</span>
-                        Indústria Alimentícia
+                <h2><span>Características</span> Principais</h2>
+                <div class="caracteristicas">
+                    <div class="caracteristica-item">
+                        <h3>⚡ Floculação Ultrarrápida</h3>
+                        <p>Forma flocos gigantes e de altíssima resistência mecânica que decantam em poucos segundos.</p>
                     </div>
-                    <div class="setor-card">
-                        <span class="setor-icon">📄</span>
-                        Papel e Celulose
+                    <div class="caracteristica-item">
+                        <h3>🎯 Desaguamento de Lodo</h3>
+                        <p>Aumenta o teor de sólidos da torta de lodo em centrífugas, belt-press e filtros-prensa, gerando uma água limpa de filtrado.</p>
                     </div>
-                    <div class="setor-card">
-                        <span class="setor-icon">⚡</span>
-                        Geração de Energia
+                    <div class="caracteristica-item">
+                        <h3>🧬 Alta Solubilidade</h3>
+                        <p>Preparações fáceis e homogêneas em tanques de diluição de polímeros sem formação de "olhos de peixe" (grumos).</p>
+                    </div>
+                    <div class="caracteristica-item">
+                        <h3>✅ Baixa Dosagem</h3>
+                        <p>Altamente concentrados, operam em concentrações muito baixas (ppm), garantindo alta rentabilidade.</p>
                     </div>
                 </div>
+            </div>
+
+            <div class="secao">
+                <h2><span>Especificações</span> Técnicas</h2>
+                <div class="tabela-wrapper">
+                    <table class="tabela-specs">
+                        <tr>
+                            <th>Parâmetro</th>
+                            <th>Valor/Características</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Aspecto</strong></td>
+                            <td>Pó branco granular ou emulsão líquida leitosa</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Carga do Polímero</strong></td>
+                            <td>Aniônico, Catiônico ou Não-Iônico (conforme especificação técnica do projeto)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Densidade de Carga</strong></td>
+                            <td>Variável de Muito Baixa a Muito Alta (customizável via Jar-Test)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Peso Molecular</strong></td>
+                            <td>Muito Alto (fornecendo flocos resistentes e firmes)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Concentração de Preparo Recomendada</strong></td>
+                            <td>0,1% a 0,5% (solução mãe de trabalho)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Embalagem</strong></td>
+                            <td>Sacos de 25 kg (pó), Bombonas de 20L/50L e IBC de 1000L (emulsões)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="secao">
+                <h2>Principais <span>Aplicações</span></h2>
+                <div class="aplicacoes">
+                    <div class="aplicacao-item">
+                        <div class="aplicacao-icone">💩</div>
+                        <h3>Desidratação de Lodo</h3>
+                        <p>Condicionamento de lodo biológico secundário para secagem mecânica em filtros-prensa e centrífugas decantadoras.</p>
+                    </div>
+                    <div class="aplicacao-item">
+                        <div class="aplicacao-icone">⚙️</div>
+                        <h3>Clarificação Metalúrgica</h3>
+                        <p>Tratamento físico-químico primário de efluentes galvânicos e de lavagem de peças metálicas.</p>
+                    </div>
+                    <div class="aplicacao-item">
+                        <div class="aplicacao-icone">📄</div>
+                        <h3>Papel e Celulose</h3>
+                        <p>Auxiliar de retenção de fibras e cargas minerais na máquina de papel e tratamento de efluentes industriais complexos.</p>
+                    </div>
+                    <div class="aplicacao-item">
+                        <div class="aplicacao-icone">🏭</div>
+                        <h3>Indústria de Alimentos</h3>
+                        <p>Clarificação de águas residuárias com alta presença de óleos, gorduras e suspensões orgânicas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="secao">
+                <h2><span>Benefícios</span> da Utilização</h2>
+                <ul class="beneficios-lista">
+                    <li><strong>Decantação Instantânea:</strong> Reduz sensivelmente o tempo de decantação em tanques clarificadores, aumentando a capacidade da planta.</li>
+                    <li><strong>Lodo Seco e Compactado:</strong> Produz tortas de lodo mais secas, diminuindo drasticamente o custo de transporte e disposição final dos resíduos.</li>
+                    <li><strong>Água de Retorno Altamente Clarificada:</strong> Sobrenadante transparente e sem sólidos em suspensão.</li>
+                    <li><strong>Alta Performance de Flotação:</strong> Excelente atuação conjunta com flotadores por ar dissolvido (FAD).</li>
+                    <li><strong>Conformidade Ambiental:</strong> Essencial para o enquadramento do efluente final nos parâmetros de descarte exigidos pela lei.</li>
+                </ul>
+            </div>
+
+            <div class="secao">
+                <h2>Por que Comprar Polímeros da <span>Chieti</span>?</h2>
+                <ul class="beneficios-lista">
+                    <li><strong>Qualidade Premium:</strong> Produtos selecionados importados e nacionais com elevado peso molecular e estabilidade garantida.</li>
+                    <li><strong>Suporte de Engenharia (Jar-Test):</strong> Realizamos testes práticos em laboratório para selecionar o polímero exato com a densidade de carga ideal para seu efluente.</li>
+                    <li><strong>Logística e Abastecimento Rápido:</strong> Disponibilidade de estoque permanente com entregas eficientes.</li>
+                </ul>
+            </div>
+
+            <div class="ete-highlight-box">
+                <h3>Precisa de ajuda com a aplicação?</h3>
+                <p>Nós não apenas fornecemos os produtos, mas garantimos o funcionamento e a conformidade total do seu
+                    processo com a nossa solução integrada.</p>
+                <a href="gestao-ete-conformidade-ambiental.html" class="btn-highlight">Conheça nossa Gestão Completa de
+                    ETE</a>
             </div>
 
         </div>
@@ -1178,9 +1317,8 @@
     <section class="formulario-section" id="contato">
         <div class="container">
             <div class="formulario-container">
-                <h2>Falar com um <span>Especialista</span></h2>
-                <p>Precisa de auxílio para licenciamento, emissão de CADRI ou outorgas na RMC ou interior de SP? Agende
-                    uma conversa.</p>
+                <h2>Solicitar <span>Orçamento</span></h2>
+                <p>Deixe seus dados e nossos especialistas entrarão em contato com uma proposta personalizada.</p>
 
                 <form id="contatoForm" action="https://formspree.io/f/xzdakajy" method="POST">
                     <div class="form-group">
@@ -1204,18 +1342,16 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="mensagem">Qual é sua necessidade em licenciamento ou consultoria? *</label>
+                        <label for="mensagem">Qual é sua necessidade? Volume estimado? *</label>
                         <textarea id="mensagem" name="mensagem"
-                            placeholder="Ex: Precisamos renovar a Licença de Operação (LO) da nossa fábrica em Campinas e emitir um novo CADRI..."
+                            placeholder="Ex: Preciso de polímero catiônico para centrífuga de lodo biológico, volume 500kg..."
                             required></textarea>
                     </div>
 
                     <div class="form-buttons">
-                        <button type="submit" class="btn-primary">Falar com Especialista</button>
-                        <a href="https://wa.me/5515997961818?text=Olá! Gostaria de falar com um técnico sobre consultoria e licenciamento ambiental."
-                            class="btn-primary" target="_blank"
-                            style="text-align:center; display:flex; align-items:center; justify-content:center;">Falar
-                            via WhatsApp</a>
+                        <button type="submit" class="btn-primary">Enviar Solicitação</button>
+                        <a href="https://wa.me/5515997961818?text=Olá! Gostaria de um orçamento para Polímeros da Chieti Química."
+                            class="btn-primary" target="_blank">WhatsApp</a>
                     </div>
                 </form>
             </div>
@@ -1279,7 +1415,7 @@
     </div>
 
     <script>
-        // ===== MENU HAMBÚRGUER MOBILE =====
+        // ===== Menu hambúrguer =====
         const menuToggle = document.getElementById('menuToggle');
         const mainNav = document.getElementById('mainNav');
         const navOverlay = document.getElementById('navOverlay');
@@ -1290,20 +1426,18 @@
             navOverlay.classList.toggle('active');
             document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
         }
-
         function closeMenu() {
             menuToggle.classList.remove('active');
             mainNav.classList.remove('active');
             navOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
-
         menuToggle.addEventListener('click', toggleMenu);
         navOverlay.addEventListener('click', closeMenu);
 
-        // Acordeão dos dropdowns no mobile
+        // Dropdown acordeão no mobile
         document.querySelectorAll('.dropdown .nav-item').forEach(item => {
-            item.addEventListener('click', (e) => {
+            item.addEventListener('click', e => {
                 if (window.innerWidth <= 900) {
                     e.preventDefault();
                     item.parentElement.classList.toggle('open');
@@ -1311,14 +1445,14 @@
             });
         });
 
-        // Fecha o menu ao clicar em qualquer link de navegação
+        // Fechar menu ao clicar nos links
         document.querySelectorAll('#mainNav a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 900) closeMenu();
             });
         });
 
-        // ===== WHATSAPP WIDGET =====
+        // ===== WhatsApp widget =====
         function toggleWhatsApp() {
             const card = document.getElementById('whatsappCard');
             card.style.display = card.style.display === 'block' ? 'none' : 'block';

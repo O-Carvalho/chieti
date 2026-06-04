@@ -173,15 +173,46 @@
             background-color: var(--cor-laranja-escuro);
         }
 
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
+        /* Botão WhatsApp dentro do nav só aparece no mobile */
+        nav .btn-whatsapp-header {
+            display: none;
+        }
 
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
+        /* ========================================
+           BOTÃO HAMBÚRGUER (mobile)
+        ======================================== */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+            padding: 0;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--cor-texto);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9.5px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9.5px) rotate(-45deg);
         }
 
         /* ===== HERO SECTION ===== */
@@ -517,40 +548,7 @@
             color: #fff;
         }
 
-        @media (max-width: 768px) {
-            .hero {
-                padding: 4rem 0 3rem;
-                min-height: auto;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-stats {
-                gap: 1.5rem;
-            }
-
-            .hero-stat-number {
-                font-size: 1.6rem;
-            }
-        }
-
         /* ===== PRODUTOS SECTION ===== */
-        .logohe {
-            width: 90%;
-            height: 40px;
-            display: flex;
-        }
-
         .produtos {
             padding: 4rem 0;
             background-color: var(--cor-fundo);
@@ -735,18 +733,6 @@
             line-height: 1.5;
         }
 
-        .why-chieti__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(255, 122, 0, 0.18);
-            /* sombra laranja sutil */
-            filter: saturate(1.05) contrast(1.02);
-            transition: transform 0.5s ease;
-        }
-
         /* ===== IMAGEM "POR QUE CHIETI" COM OVERLAY ÂMBAR ===== */
         .why-chieti__image {
             position: relative;
@@ -783,7 +769,6 @@
             transform: scale(1.03);
         }
 
-
         /* ===== INDICADORES SECTION ===== */
         .indicadores {
             background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 100%),
@@ -807,7 +792,6 @@
             position: relative;
         }
 
-        /* Divisórias verticais translúcidas */
         .indicador-item:not(:last-child)::after {
             content: '';
             position: absolute;
@@ -833,34 +817,6 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-
-        @media (max-width: 900px) {
-            .indicadores-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem 0;
-            }
-
-            .indicador-item:nth-child(even)::after {
-                display: none;
-            }
-
-            .indicador-item:nth-child(1)::after,
-            .indicador-item:nth-child(3)::after {
-                height: 50%;
-                top: 25%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .indicador-item h3 {
-                font-size: 2.8rem;
-            }
-
-            .indicador-item p {
-                font-size: 0.95rem;
-            }
-        }
-
 
         /* ===== SETORES CAROUSEL SECTION ===== */
         .setores {
@@ -993,33 +949,6 @@
             border-radius: 5px;
         }
 
-        @media (max-width: 900px) {
-            .setor-card {
-                flex: 0 0 calc(50% - 0.75rem);
-            }
-
-            .setores-header h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .setor-card {
-                flex: 0 0 100%;
-            }
-
-            .setores-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1.5rem;
-            }
-
-            .setores-controls {
-                width: 100%;
-                justify-content: flex-end;
-            }
-        }
-
         /* ===== FORMULARIO SECTION ===== */
         .formulario-section {
             padding: 4rem 0;
@@ -1035,6 +964,10 @@
             text-align: center;
             font-size: 2rem;
             margin-bottom: 0.5rem;
+        }
+
+        .formulario-container h2 span {
+            color: var(--cor-laranja);
         }
 
         .formulario-container p {
@@ -1112,6 +1045,7 @@
             text-decoration: none;
             margin-bottom: 0.5rem;
             font-size: 0.95rem;
+            display: block;
         }
 
         .footer-section a:hover {
@@ -1141,48 +1075,6 @@
 
         .fade-in {
             animation: fadeInUp 0.6s ease-out;
-        }
-
-        /* ===== RESPONSIVIDADE ===== */
-        @media (max-width: 1024px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .diferenciais-lista li {
-                padding: 0.8rem 0;
-                padding-left: 2rem;
-            }
-
-            .form-buttons {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                font-size: 0.9rem;
-            }
-
-            .hero h1 {
-                font-size: 1.5rem;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            nav {
-                gap: 1rem;
-            }
         }
 
         /* Floating WhatsApp Widget */
@@ -1348,6 +1240,326 @@
         .whatsapp-option-icon {
             font-size: 1.3rem;
         }
+
+        /* Overlay do menu mobile */
+        .nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1040;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ========================================
+           RESPONSIVIDADE GERAL
+        ======================================== */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .diferenciais-content {
+                gap: 2.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        /* ===== TABLET / MOBILE (<= 900px) ===== */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+                flex-wrap: nowrap;
+            }
+
+            .logohe {
+                width: auto;
+                max-width: 160px;
+            }
+
+            .logohe img {
+                max-height: 40px;
+                width: auto;
+            }
+
+            /* Nav vira menu lateral */
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background-color: var(--cor-branco);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                padding: 5rem 1.5rem 2rem;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+                transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 1050;
+                overflow-y: auto;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav a,
+            .nav-item {
+                width: 100%;
+                padding: 0.9rem 0;
+                border-bottom: 1px solid var(--cor-borda);
+                font-size: 1rem;
+            }
+
+            .dropdown {
+                width: 100%;
+                display: block;
+            }
+
+            .dropdown-content {
+                visibility: visible;
+                opacity: 1;
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                min-width: 100%;
+                margin: 0;
+                padding-left: 1rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .dropdown.open .dropdown-content {
+                max-height: 500px;
+            }
+
+            .dropdown-content a {
+                border-bottom: 1px solid var(--cor-borda);
+                font-size: 0.9rem;
+                padding: 0.7rem 0.5rem;
+            }
+
+            /* WhatsApp do header (fora do nav) some no mobile */
+            .header-content>.btn-whatsapp-header {
+                display: none;
+            }
+
+            nav .btn-whatsapp-header {
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+                margin-top: 1rem;
+            }
+
+            /* Diferenciais empilha */
+            .diferenciais-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .why-chieti__image {
+                min-height: 320px;
+            }
+
+            .diferenciais-texto h2 {
+                font-size: 2rem;
+            }
+
+            /* Indicadores 2 colunas */
+            .indicadores-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem 0;
+            }
+
+            .indicador-item:nth-child(even)::after {
+                display: none;
+            }
+
+            .indicador-item:nth-child(1)::after,
+            .indicador-item:nth-child(3)::after {
+                height: 50%;
+                top: 25%;
+            }
+
+            .setor-card {
+                flex: 0 0 calc(50% - 0.75rem);
+            }
+
+            .setores-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== MOBILE (<= 768px) ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.2rem;
+            }
+
+            .hero {
+                padding: 4rem 0 3rem;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary {
+                width: 100%;
+                margin: 0;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .diferenciais {
+                padding: 3rem 0;
+            }
+
+            .diferenciais-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .diferenciais-content {
+                gap: 2rem;
+            }
+
+            .why-chieti__image {
+                min-height: 280px;
+            }
+
+            .indicadores {
+                padding: 3rem 0;
+            }
+
+            .setores {
+                padding: 3rem 0;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* ===== MOBILE PEQUENO (<= 480px) ===== */
+        @media (max-width: 480px) {
+            body {
+                font-size: 0.95rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 3rem 0 2.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .hero-label {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.9rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.85rem 1.5rem;
+                font-size: 0.92rem;
+            }
+
+            .diferenciais-texto h2,
+            .setores-header h2,
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .indicadores-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .indicador-item::after {
+                display: none !important;
+            }
+
+            .indicador-item h3 {
+                font-size: 2.6rem;
+            }
+
+            .setor-card {
+                flex: 0 0 100%;
+                padding: 2rem 1.5rem;
+            }
+
+            .setores-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.2rem;
+            }
+
+            .setores-controls {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .formulario-container h2 {
+                font-size: 1.6rem;
+            }
+
+            .whatsapp-widget {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-card {
+                width: calc(100vw - 40px);
+                right: 0;
+            }
+
+            .why-chieti__image {
+                min-height: 260px;
+            }
+        }
     </style>
 </head>
 
@@ -1360,7 +1572,14 @@
                 <a href="#home" class="logo">
                     <div class="logohe"><img src="images/logo_chieti.png" /></div>
                 </a>
-                <nav>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav id="mainNav">
                     <a href="index.html">Home</a>
                     <div class="dropdown">
                         <span class="nav-item">Serviços <span style="font-size: 0.7rem;">▼</span></span>
@@ -1384,12 +1603,18 @@
                     <a href="#diferenciais">Diferenciais</a>
                     <a href="#setores">Setores</a>
                     <a href="#contato">Contato</a>
+                    <a href="https://wa.me/5515997961818?text=Olá! Gostaria de conhecer mais sobre as soluções da Chieti Química."
+                        class="btn-whatsapp-header" target="_blank">WhatsApp</a>
                 </nav>
+
                 <a href="https://wa.me/5515997961818?text=Olá! Gostaria de conhecer mais sobre as soluções da Chieti Química."
                     class="btn-whatsapp-header" target="_blank">WhatsApp</a>
             </div>
         </div>
     </header>
+
+    <!-- Overlay do menu mobile -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- HERO SECTION -->
     <section class="hero" id="home">
@@ -1403,7 +1628,6 @@
         </div>
         <div class="container">
             <div class="hero-content">
-
                 <h1>Soluções <span>Químicas</span> de <span>Alta Performance</span> para a Indústria</h1>
                 <p>Do tratamento de água à operação de caldeiras — produtos e serviços especializados que garantem
                     conformidade ambiental e eficiência operacional.</p>
@@ -1416,12 +1640,114 @@
                     <span class="pulse-dot"></span>
                     Suporte Técnico 24/7 Disponível
                 </div>
-
             </div>
         </div>
     </section>
 
+    <!-- PRODUTOS SECTION -->
+    <section class="produtos" id="produtos-highlight">
+        <div class="container">
+            <h2 class="section-title">Nossos <span>Produtos</span> em Destaque</h2>
+            <div class="produtos-grid">
+                <!-- Card 1 - Mascarante de Odor -->
+                <div class="produto-card">
+                    <a href="produto-mascarante-odor.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="produto-imagem"><img src="images/MascaranteDeOdor.png" alt="Mascarante de Odor" /></div>
+                        <div class="produto-info">
+                            <h3>Mascarante de Odor</h3>
+                            <p>Solução eficaz e inovadora para eliminação de odores indesejáveis em processos industriais.</p>
+                            <div class="produto-tags">
+                                <span class="tag">Ambiental</span>
+                                <span class="tag">Segurança</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
+                <!-- Card 2 - PAC -->
+                <div class="produto-card">
+                    <a href="produto-pac.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="produto-imagem"><img src="images/PolicloretoDeAluminioSVG.svg" alt="PAC" /></div>
+                        <div class="produto-info">
+                            <h3>Policloreto de Alumínio (PAC)</h3>
+                            <p>Excelente coagulante para tratamento de água e efluentes com alta eficiência de clarificação.</p>
+                            <div class="produto-tags">
+                                <span class="tag">Água</span>
+                                <span class="tag">Efluentes</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 3 - Sulfato Férrico -->
+                <div class="produto-card">
+                    <a href="produto-sulfato-ferrico.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="produto-imagem"><img src="images/SulfatoFerricoSVG.svg" alt="Sulfato Férrico" /></div>
+                        <div class="produto-info">
+                            <h3>Sulfato Férrico</h3>
+                            <p>Coagulante especializado para tratamento de águas residuárias com excelente performance.</p>
+                            <div class="produto-tags">
+                                <span class="tag">Tratamento</span>
+                                <span class="tag">Industrial</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 4 - Sulfato de Alumínio -->
+                <div class="produto-card">
+                    <a href="produto-sulfato-aluminio.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="produto-imagem"><img src="images/SulfatoDeAluminio.png" alt="Sulfato de Alumínio" /></div>
+                        <div class="produto-info">
+                            <h3>Sulfato de Alumínio</h3>
+                            <p>Solução clássica e confiável para clarificação de águas de abastecimento e efluentes.</p>
+                            <div class="produto-tags">
+                                <span class="tag">Abastecimento</span>
+                                <span class="tag">Água</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 5 - Soda Cáustica -->
+                <div class="produto-card">
+                    <a href="produto-soda-caustica.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="produto-imagem"><img src="images/SodaCaustica.png" alt="Soda Cáustica" /></div>
+                        <div class="produto-info">
+                            <h3>Soda Cáustica</h3>
+                            <p>Produto químico versátil com múltiplas aplicações em processos industriais e tratamento de água.</p>
+                            <div class="produto-tags">
+                                <span class="tag">Múltiplo</span>
+                                <span class="tag">Industrial</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 6 - Polímeros -->
+                <div class="produto-card">
+                    <a href="produto-polimeros.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+                        <div class="produto-imagem"><img src="images/Polimeros.png" alt="Polímeros" /></div>
+                        <div class="produto-info">
+                            <h3>Polímeros</h3>
+                            <p>Floculantes de alta performance para potabilização, tratamento de efluentes e otimização de processos.</p>
+                            <div class="produto-tags">
+                                <span class="tag">Floculação</span>
+                                <span class="tag">Premium</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Botão Ver Todos -->
+                <div style="grid-column: 1 / -1; text-align: center; padding: 2rem 0 1rem 0;">
+                    <a href="produtos.html" class="btn-primary" style="padding: 1.2rem 3.5rem; font-size: 1.1rem; display: inline-block;">
+                        Ver Todos os Produtos (12 itens)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- DIFERENCIAIS SECTION -->
     <section class="diferenciais" id="diferenciais">
@@ -1434,42 +1760,36 @@
                         otimizar os processos químicos e a conformidade ambiental de sua empresa.
                     </p>
                     <div class="diferenciais-grid">
-                        <!-- Card 1: Profissionalismo -->
                         <div class="diferencial-card">
                             <div class="diferencial-icone">🔬</div>
                             <h3 class="diferencial-titulo">Profissionalismo</h3>
                             <p class="diferencial-descricao">Equipe especializada com vasta experiência prática e
                                 teórica no setor químico industrial.</p>
                         </div>
-                        <!-- Card 2: Produtos de Qualidade -->
                         <div class="diferencial-card">
                             <div class="diferencial-icone">⚗️</div>
                             <h3 class="diferencial-titulo">Produtos de Qualidade</h3>
                             <p class="diferencial-descricao">Formulações otimizadas sob rígido controle de qualidade
                                 para garantir a melhor performance.</p>
                         </div>
-                        <!-- Card 3: Suporte Técnico -->
                         <div class="diferencial-card">
                             <div class="diferencial-icone">🛠️</div>
                             <h3 class="diferencial-titulo">Suporte Técnico</h3>
                             <p class="diferencial-descricao">Acompanhamento personalizado e consultoria técnica
                                 especializada para cada tipo de aplicação.</p>
                         </div>
-                        <!-- Card 4: Inovação Contínua -->
                         <div class="diferencial-card">
                             <div class="diferencial-icone">💡</div>
                             <h3 class="diferencial-titulo">Inovação Contínua</h3>
                             <p class="diferencial-descricao">Pesquisa e desenvolvimento contínuos focado no
                                 desenvolvimento de soluções sob medida.</p>
                         </div>
-                        <!-- Card 5: Pontualidade -->
                         <div class="diferencial-card">
                             <div class="diferencial-icone">🚚</div>
                             <h3 class="diferencial-titulo">Pontualidade</h3>
                             <p class="diferencial-descricao">Logística estruturada e eficiente que assegura entregas
                                 ágeis e pontuais em toda a região.</p>
                         </div>
-                        <!-- Card 6: Conformidade -->
                         <div class="diferencial-card">
                             <div class="diferencial-icone">✅</div>
                             <h3 class="diferencial-titulo">Conformidade</h3>
@@ -1485,7 +1805,7 @@
         </div>
     </section>
 
-    <!-- INDICADORES SECTION ===== -->
+    <!-- INDICADORES SECTION -->
     <section class="indicadores">
         <div class="container">
             <div class="indicadores-grid">
@@ -1615,7 +1935,6 @@
                     <p>📧 contato@chietiquimica.com.br</p>
                     <p>📍 Araçoiaba da Serra, São Paulo</p>
                 </div>
-
                 <div class="footer-section">
                     <h3>Links Rápidos</h3>
                     <a href="produtos.html">Produtos</a>
@@ -1657,13 +1976,54 @@
     </div>
 
     <script>
+        // ===== MENU HAMBÚRGUER MOBILE =====
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            mainNav.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', closeMenu);
+
+        // Acordeão dos dropdowns no mobile
+        document.querySelectorAll('.dropdown .nav-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (window.innerWidth <= 900) {
+                    e.preventDefault();
+                    item.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        // Fecha o menu ao clicar em qualquer link de navegação
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 900) closeMenu();
+            });
+        });
+
         // Animação de scroll suave para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const href = this.getAttribute('href');
+                const target = document.querySelector(href);
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    e.preventDefault();
+                    closeMenu();
+                    setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 50);
                 }
             });
         });
@@ -1683,7 +2043,6 @@
             });
         }, observerOptions);
 
-        // Aplicar observador a cards e seções
         document.querySelectorAll('.produto-card, .setor-card, .indicador-item, .diferencial-card').forEach(el => {
             observer.observe(el);
         });
@@ -1695,14 +2054,12 @@
                     const targetEl = entry.target;
                     const endVal = parseInt(targetEl.getAttribute('data-target'), 10);
                     const suffix = targetEl.getAttribute('data-suffix') || '';
-                    let startVal = 0;
-                    const duration = 1500; // 1.5s
+                    const duration = 1500;
                     const startTime = performance.now();
 
                     function updateNumber(now) {
                         const elapsed = now - startTime;
                         const progress = Math.min(elapsed / duration, 1);
-                        // Efeito de easing outQuad
                         const easeProgress = progress * (2 - progress);
                         const currentVal = Math.floor(easeProgress * endVal);
 
@@ -1721,7 +2078,6 @@
             });
         }, { threshold: 0.1 });
 
-        // Inicializar observador para cada número animável
         document.querySelectorAll('.count-up').forEach(el => {
             countUpObserver.observe(el);
         });
@@ -1762,11 +2118,9 @@
         }
 
         function updateCarousel() {
-            const visibleCards = getVisibleCards();
             const maxIdx = maxIndex();
             if (currentIndex > maxIdx) currentIndex = maxIdx;
 
-            // Calculate slide width and offset
             if (cards.length > 0) {
                 const cardWidth = cards[0].offsetWidth;
                 const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
@@ -1774,11 +2128,9 @@
                 const offset = currentIndex * (cardWidth + gap);
                 track.style.transform = `translateX(-${offset}px)`;
 
-                // Update disabled status of buttons
                 prevBtn.classList.toggle('disabled', currentIndex === 0);
                 nextBtn.classList.toggle('disabled', currentIndex === maxIdx);
 
-                // Update dots
                 const dots = Array.from(dotsContainer.children);
                 dots.forEach((dot, idx) => {
                     dot.classList.toggle('active', idx === currentIndex);
@@ -1800,15 +2152,20 @@
             }
         });
 
+        let resizeTimer;
         window.addEventListener('resize', () => {
-            createDots();
-            updateCarousel();
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                createDots();
+                updateCarousel();
+            }, 150);
         });
 
         // Initialize Carousel
         createDots();
         updateCarousel();
 
+        // ===== WHATSAPP WIDGET =====
         function toggleWhatsApp() {
             const card = document.getElementById('whatsappCard');
             card.style.display = card.style.display === 'block' ? 'none' : 'block';
