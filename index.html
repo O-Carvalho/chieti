@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17882030794"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17882030794');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17882030794"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-17882030794');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chieti Química</title>
-
     <link rel="icon" type="image/png" href="images/favicon_logo.png">
-    <meta name="description" content="Chieti Química: Produtos químicos industriais especializados em mascarante de odor, tratamento de água e soluções ambientais de alta performance.">
+    <meta name="description"
+        content="Chieti Química: Produtos químicos industriais especializados em mascarante de odor, tratamento de água e soluções ambientais de alta performance.">
     <style>
         * {
             margin: 0;
@@ -51,7 +51,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         }
 
         .container {
@@ -78,21 +78,83 @@
             color: var(--cor-texto);
         }
 
+        .logohe {
+            width: 90%;
+            height: 40px;
+            display: flex;
+        }
+
         nav {
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
-        nav a {
+        nav a,
+        .nav-item {
             color: var(--cor-texto);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
             font-size: 0.95rem;
+            cursor: pointer;
         }
 
-        nav a:hover {
+        nav a:hover,
+        .nav-item:hover {
+            color: var(--cor-laranja);
+        }
+
+        /* Dropdown menu styling */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: var(--cor-branco);
+            min-width: 280px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+            z-index: 1001;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            margin-top: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(15px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            list-style: none;
+            padding: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-content a {
+            color: var(--cor-texto);
+            padding: 0.8rem 1.2rem;
+            text-decoration: none;
+            display: block;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-bottom: 1px solid var(--cor-borda);
+            text-align: left;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(255, 140, 0, 0.08);
             color: var(--cor-laranja);
         }
 
@@ -115,6 +177,7 @@
             nav {
                 display: none;
             }
+
             .header-content {
                 flex-direction: column;
                 gap: 1rem;
@@ -123,40 +186,274 @@
 
         /* ===== HERO SECTION ===== */
         .hero {
-            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.04) 100%);
-            padding: 4rem 0;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 30%, #16213e 60%, #0f0f0f 100%);
+            padding: 6rem 0 5rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 20% 50%, rgba(255, 140, 0, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(255, 100, 0, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 80%, rgba(255, 160, 50, 0.06) 0%, transparent 50%);
+            animation: hero-glow 8s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes hero-glow {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-3%, 2%) scale(1.05);
+            }
+
+            100% {
+                transform: translate(2%, -1%) scale(1);
+            }
+        }
+
+        /* Floating shapes */
+        .hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 140, 0, 0.06);
+            border: 1px solid rgba(255, 140, 0, 0.1);
+        }
+
+        .hero-shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            right: -80px;
+            animation: float-shape 12s ease-in-out infinite;
+        }
+
+        .hero-shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: -30px;
+            left: -50px;
+            animation: float-shape 10s ease-in-out infinite reverse;
+        }
+
+        .hero-shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 30%;
+            left: 10%;
+            animation: float-shape 14s ease-in-out infinite 2s;
+        }
+
+        .hero-shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            right: 15%;
+            animation: float-shape 9s ease-in-out infinite 1s;
+            border-radius: 30%;
+            transform: rotate(45deg);
+        }
+
+        .hero-shape:nth-child(5) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            right: 25%;
+            animation: float-shape 11s ease-in-out infinite 3s;
+        }
+
+        @keyframes float-shape {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-25px) rotate(5deg);
+            }
+
+            66% {
+                transform: translateY(15px) rotate(-3deg);
+            }
+        }
+
+        /* Animated grid lines */
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 140, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 140, 0, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+            animation: grid-move 20s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 60px 60px;
+            }
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 140, 0, 0.12);
+            border: 1px solid rgba(255, 140, 0, 0.25);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #ffb347;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero-label .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #25d366;
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.5);
+            }
         }
 
         .hero h1 {
-            font-size: 3rem;
-            color: var(--cor-texto);
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            color: var(--cor-branco);
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            animation: fadeInUp 0.6s ease-out 0.15s both;
         }
 
         .hero h1 span {
-            color: var(--cor-laranja);
+            background: linear-gradient(135deg, #FF8C00, #FFB347, #FF6B00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: var(--cor-texto-secundario);
-            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2.5rem;
             line-height: 1.8;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.6s ease-out 0.45s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            animation: fadeInUp 0.6s ease-out 0.6s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--cor-branco);
+            line-height: 1;
+        }
+
+        .hero-stat-number span {
+            background: linear-gradient(135deg, #FF8C00, #FFB347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-stat-label {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .hero-stat-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .btn-primary {
-            background-color: var(--cor-laranja);
+            background: linear-gradient(135deg, #FF8C00, #F3700C);
             color: var(--cor-branco);
             padding: 1rem 2.5rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -164,20 +461,36 @@
             display: inline-block;
             text-decoration: none;
             margin: 0 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
         }
 
         .btn-primary:hover {
-            background-color: var(--cor-laranja-escuro);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255, 140, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 140, 0, 0.4);
         }
 
         .btn-secondary {
             background-color: transparent;
             color: var(--cor-laranja);
             padding: 1rem 2.5rem;
-            border: 2px solid var(--cor-laranja);
-            border-radius: 5px;
+            border: 2px solid rgba(255, 140, 0, 0.5);
+            border-radius: 8px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -187,16 +500,47 @@
         }
 
         .btn-secondary:hover {
-            background-color: var(--cor-laranja);
-            color: var(--cor-branco);
+            background: rgba(255, 140, 0, 0.1);
+            border-color: var(--cor-laranja);
+            color: #FFB347;
+            transform: translateY(-3px);
+        }
+
+        .hero .btn-secondary {
+            color: rgba(255, 255, 255, 0.9);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .hero .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.6);
+            color: #fff;
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
+            .hero {
+                padding: 4rem 0 3rem;
+                min-height: auto;
             }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
             .hero p {
                 font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .hero-stat-number {
+                font-size: 1.6rem;
             }
         }
 
@@ -206,6 +550,7 @@
             height: 40px;
             display: flex;
         }
+
         .produtos {
             padding: 4rem 0;
             background-color: var(--cor-fundo);
@@ -232,13 +577,13 @@
             background-color: var(--cor-branco);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
         }
 
         .produto-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
         }
 
         .produto-imagem {
@@ -292,123 +637,385 @@
 
         /* ===== DIFERENCIAIS SECTION ===== */
         .diferenciais {
-            padding: 4rem 0;
+            padding: 5rem 0;
+            background-color: var(--cor-branco);
         }
 
         .diferenciais-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
             align-items: center;
         }
 
         .diferenciais-texto h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
             color: var(--cor-texto);
+            font-weight: 800;
         }
 
         .diferenciais-texto h2 span {
             color: var(--cor-laranja);
         }
 
-        .diferenciais-lista {
-            list-style: none;
-        }
-
-        .diferenciais-lista li {
-            padding: 1rem 0;
-            padding-left: 2.5rem;
-            position: relative;
+        .diferenciais-subtitulo {
+            font-size: 1.1rem;
             color: var(--cor-texto-secundario);
-            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
         }
 
-        .diferenciais-lista li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--cor-laranja);
-            font-weight: bold;
-            font-size: 1.3rem;
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
         }
 
-        .diferenciais-imagem {
-            background: linear-gradient(135deg, rgba(255, 140, 0, 0.15) 0%, rgba(255, 140, 0, 0.08) 100%);
-            border-radius: 8px;
-            height: 400px;
+        .diferencial-card {
+            background-color: var(--cor-branco);
+            border: 1px solid var(--cor-borda);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diferencial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background-color: var(--cor-laranja);
+            transition: height 0.3s ease;
+        }
+
+        .diferencial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 122, 0, 0.15);
+            border-color: rgba(255, 122, 0, 0.3);
+        }
+
+        .diferencial-card:hover::before {
+            height: 100%;
+        }
+
+        .diferencial-icone {
+            font-size: 2rem;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: rgba(255, 140, 0, 0.3);
+            width: 48px;
+            height: 48px;
+            background-color: rgba(255, 122, 0, 0.08);
+            border-radius: 10px;
+            color: var(--cor-laranja);
+            transition: transform 0.3s ease;
+        }
+
+        .diferencial-card:hover .diferencial-icone {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .diferencial-titulo {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--cor-texto);
+        }
+
+        .diferencial-descricao {
+            font-size: 0.92rem;
+            color: var(--cor-texto-secundario);
+            line-height: 1.5;
+        }
+
+        .why-chieti__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(255, 122, 0, 0.18); /* sombra laranja sutil */
+            filter: saturate(1.05) contrast(1.02);
+            transition: transform 0.5s ease;
+        }
+
+        /* Overlay laranja sutil para integrar com a marca */
+        .why-chieti__image {
+            position: relative;
+            height: 100%;
+            min-height: 450px;
+        }
+        .why-chieti__image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255,122,0,0.12), transparent 60%);
+            pointer-events: none;
+        }
+
+        .why-chieti__image:hover img {
+            transform: scale(1.03);
+        }
+
+        @media (max-width: 900px) {
+            .diferenciais-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .why-chieti__image {
+                min-height: 350px;
+            }
         }
 
         @media (max-width: 768px) {
-            .diferenciais-content {
+            .diferenciais-grid {
                 grid-template-columns: 1fr;
-            }
-            .diferenciais-imagem {
-                height: 300px;
             }
         }
 
         /* ===== INDICADORES SECTION ===== */
         .indicadores {
-            background: linear-gradient(135deg, var(--cor-laranja) 0%, #FF7F00 100%);
-            padding: 4rem 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 100%),
+                linear-gradient(135deg, #ff8c1a 0%, #ff6a00 100%);
+            padding: 5rem 0;
             color: var(--cor-branco);
+            position: relative;
+            overflow: hidden;
         }
 
         .indicadores-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            position: relative;
+            z-index: 1;
+        }
+
+        .indicador-item {
             text-align: center;
+            padding: 1.5rem 1rem;
+            position: relative;
+        }
+
+        /* Divisórias verticais translúcidas */
+        .indicador-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background-color: rgba(255, 255, 255, 0.25);
         }
 
         .indicador-item h3 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 0.5rem;
+            line-height: 1;
+            font-family: inherit;
         }
 
         .indicador-item p {
-            font-size: 1rem;
-            opacity: 0.95;
+            font-size: 1.05rem;
+            font-weight: 500;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* ===== SETORES SECTION ===== */
+        @media (max-width: 900px) {
+            .indicadores-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem 0;
+            }
+
+            .indicador-item:nth-child(even)::after {
+                display: none;
+            }
+
+            .indicador-item:nth-child(1)::after,
+            .indicador-item:nth-child(3)::after {
+                height: 50%;
+                top: 25%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .indicador-item h3 {
+                font-size: 2.8rem;
+            }
+
+            .indicador-item p {
+                font-size: 0.95rem;
+            }
+        }
+
+
+        /* ===== SETORES CAROUSEL SECTION ===== */
         .setores {
-            padding: 4rem 0;
+            padding: 5rem 0;
             background-color: var(--cor-fundo);
+            position: relative;
         }
 
-        .setores-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+        .setores-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
         }
 
-        .setor-item {
+        .setores-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--cor-texto);
+            margin-bottom: 0;
+        }
+
+        .setores-header h2 span {
+            color: var(--cor-laranja);
+        }
+
+        .setores-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .carousel-btn {
             background-color: var(--cor-branco);
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--cor-laranja);
+            border: 1px solid var(--cor-borda);
+            color: var(--cor-texto);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            font-size: 1.2rem;
+            user-select: none;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--cor-laranja);
+            border-color: var(--cor-laranja);
+            color: var(--cor-branco);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(255, 122, 0, 0.25);
+        }
+
+        .carousel-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .setores-carousel-container {
+            overflow: hidden;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .setores-carousel-track {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            will-change: transform;
+        }
+
+        .setor-card {
+            flex: 0 0 calc(33.333% - 1rem);
+            background-color: var(--cor-branco);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--cor-borda);
+            border-top: 5px solid var(--cor-laranja);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .setor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(255, 122, 0, 0.1);
+            border-color: rgba(255, 122, 0, 0.2);
+        }
+
+        .setor-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--cor-texto);
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .setor-card p {
+            color: var(--cor-texto-secundario);
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--cor-borda);
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .setor-item:hover {
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        .carousel-dot.active {
+            background-color: var(--cor-laranja);
+            width: 24px;
+            border-radius: 5px;
         }
 
-        .setor-item h3 {
-            color: var(--cor-laranja);
-            margin-bottom: 0.5rem;
+        @media (max-width: 900px) {
+            .setor-card {
+                flex: 0 0 calc(50% - 0.75rem);
+            }
+
+            .setores-header h2 {
+                font-size: 2rem;
+            }
         }
 
-        .setor-item p {
-            color: var(--cor-texto-secundario);
-            font-size: 0.95rem;
+        @media (max-width: 600px) {
+            .setor-card {
+                flex: 0 0 100%;
+            }
+
+            .setores-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .setores-controls {
+                width: 100%;
+                justify-content: flex-end;
+            }
         }
 
         /* ===== FORMULARIO SECTION ===== */
@@ -487,7 +1094,7 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
@@ -499,7 +1106,7 @@
 
         .footer-section p,
         .footer-section a {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             margin-bottom: 0.5rem;
             font-size: 0.95rem;
@@ -510,11 +1117,11 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding-top: 1.5rem;
             text-align: center;
             font-size: 0.9rem;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
         }
 
         /* ===== ANIMAÇÕES ===== */
@@ -523,6 +1130,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -541,14 +1149,6 @@
         }
 
         @media (max-width: 768px) {
-            .hero {
-                padding: 2.5rem 0;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
             .section-title {
                 font-size: 1.8rem;
             }
@@ -561,10 +1161,6 @@
             .form-buttons {
                 flex-direction: column;
             }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 480px) {
@@ -576,7 +1172,8 @@
                 font-size: 1.5rem;
             }
 
-            .btn-primary, .btn-secondary {
+            .btn-primary,
+            .btn-secondary {
                 padding: 0.8rem 1.5rem;
                 font-size: 0.9rem;
             }
@@ -585,171 +1182,322 @@
                 gap: 1rem;
             }
         }
+
+        /* Floating WhatsApp Widget */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+        }
+
+        .whatsapp-btn {
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-btn::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #25d366;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            animation: pulse-ring 2s infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .whatsapp-card {
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            width: 320px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e1e1e1;
+            display: none;
+            overflow: hidden;
+            animation: slide-up-animation 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        @keyframes slide-up-animation {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .whatsapp-card-header {
+            background-color: #075e54;
+            color: white;
+            padding: 1.2rem 1rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .whatsapp-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .whatsapp-header-text h4 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .whatsapp-header-text p {
+            margin: 2px 0 0 0;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .whatsapp-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .whatsapp-close:hover {
+            opacity: 1;
+        }
+
+        .whatsapp-card-body {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .whatsapp-option {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background-color: #f6f6f6;
+            padding: 0.9rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .whatsapp-option:hover {
+            background-color: #e8f5e9;
+            border-color: #25d366;
+            color: #075e54;
+            transform: translateX(3px);
+        }
+
+        .whatsapp-option-icon {
+            font-size: 1.3rem;
+        }
     </style>
 </head>
+
 <body>
+
     <!-- HEADER -->
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="#home" class="logo"><div class="logohe"><img src="images/logo_chieti.png"/></div></a>
+                <a href="#home" class="logo">
+                    <div class="logohe"><img src="images/logo_chieti.png" /></div>
+                </a>
                 <nav>
-                    <a href="produtos.html">Produtos</a>
+                    <a href="index.html">Home</a>
+                    <div class="dropdown">
+                        <span class="nav-item">Serviços <span style="font-size: 0.7rem;">▼</span></span>
+                        <div class="dropdown-content">
+                            <a href="servicos-operacao-caldeiras-nr13.html">Operação de Caldeiras (NR-13)</a>
+                            <a href="gestao-ete-conformidade-ambiental.html">Gestão de ETE</a>
+                            <a href="consultoria-licenciamento-ambiental.html">Consultoria Ambiental</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <span class="nav-item">Produtos <span style="font-size: 0.7rem;">▼</span></span>
+                        <div class="dropdown-content">
+                            <a href="produto-mascarante-odor.html">Mascarante de Odor</a>
+                            <a href="produto-pac.html">Policloreto de Alumínio (PAC)</a>
+                            <a href="produto-sulfato-ferrico.html">Sulfato Férrico</a>
+                            <a href="produto-microorganismo-metano.html">Microorganismo de Metano</a>
+                            <a href="produtos.html" style="color: var(--cor-laranja); font-weight: 700;">Ver Todos os
+                                Produtos →</a>
+                        </div>
+                    </div>
                     <a href="#diferenciais">Diferenciais</a>
                     <a href="#setores">Setores</a>
                     <a href="#contato">Contato</a>
                 </nav>
-                <a href="https://wa.me/5515997961818?text=Olá! Gostaria de conhecer mais sobre as soluções da Chieti Química." class="btn-whatsapp-header" target="_blank">WhatsApp</a>
+                <a href="https://wa.me/5515997961818?text=Olá! Gostaria de conhecer mais sobre as soluções da Chieti Química."
+                    class="btn-whatsapp-header" target="_blank">WhatsApp</a>
             </div>
         </div>
     </header>
 
     <!-- HERO SECTION -->
     <section class="hero" id="home">
+        <div class="hero-grid"></div>
+        <div class="hero-shapes">
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+        </div>
         <div class="container">
-            <div class="hero-content fade-in">
-                <h1>Soluções <span>Químicas Industriais</span> de <span>Alta Performance</span></h1>
-                <p>Tratamento de água, operação de caldeiras e produtos especializados para sua indústria.</p>
-                <a href="#contato" class="btn-primary">Solicitar Orçamento</a>
-                <a href="#produtos" class="btn-secondary">Conhecer Produtos</a>
+            <div class="hero-content">
+
+                <h1>Soluções <span>Químicas</span> de <span>Alta Performance</span> para a Indústria</h1>
+                <p>Do tratamento de água à operação de caldeiras — produtos e serviços especializados que garantem
+                    conformidade ambiental e eficiência operacional.</p>
+
+                <div class="hero-buttons">
+                    <a href="#contato" class="btn-primary">Solicitar Orçamento</a>
+                    <a href="produtos.html" class="btn-secondary">Conhecer Produtos</a>
+                </div>
+                <div class="hero-label">
+                    <span class="pulse-dot"></span>
+                    Suporte Técnico 24/7 Disponível
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- PRODUTOS SECTION -->
-    <section class="produtos" id="produtos">
-        <div class="container">
-            <h2 class="section-title">Nossos <span>Produtos</span></h2>
-            <div class="produtos-grid">
-                <div class="produto-card">
-                    <a href="produto-mascarante-odor.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
-                        <div class="produto-imagem"><img src="images/MascaranteDeOdor.png" /></div>
-                        <div class="produto-info">
-                        <h3>Mascarante de Odor</h3>
-                        <p>Solução eficaz para eliminação de odores indesejáveis em processos industriais.</p>
-                        <div class="produto-tags">
-                            <span class="tag">Ambiental</span>
-                            <span class="tag">Segurança</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="produto-card">
-                <a href="produto-pac.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
-                    <div class="produto-imagem"><img src="images/PolicloretoDeAluminioSVG.svg" /></div>
-                    <div class="produto-info">
-                        <h3>Policloreto de Alumínio (PAC)</h3>
-                        <p>Excelente coagulante para tratamento de água e efluentes.</p>
-                        <div class="produto-tags">
-                            <span class="tag">Água</span>
-                            <span class="tag">Efluentes</span>
-                        </div>
-                    </div>
-                </a>
-                </div>
-
-                <div class="produto-card">
-                    <a href="produto-sulfato-ferrico.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
-                       <div class="produto-imagem"><img src="images/SulfatoFerricoSVG.svg" /></div>
-                        <div class="produto-info">
-                            <h3>Sulfato Férrico</h3>
-                            <p>Coagulante especializado para tratamento de águas residuárias.</p>
-                            <div class="produto-tags">
-                                <span class="tag">Tratamento</span>
-                                <span class="tag">Industrial</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="produto-card">
-                    <a href="produto-sulfato-aluminio.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
-                        <div class="produto-imagem"><img src="images/SulfatoDeAluminio.png" /></div>
-                        <div class="produto-info">
-                            <h3>Sulfato de Alumínio</h3>
-                            <p>Solução clássica para clarificação de águas de abastecimento.</p>
-                            <div class="produto-tags">
-                                <span class="tag">Abastecimento</span>
-                                <span class="tag">Água</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="produto-card">
-                    <a href="produto-soda-caustica.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
-                        <div class="produto-imagem"><img src="images/SodaCaustica.png" /></div>
-                        <div class="produto-info">
-                            <h3>Soda Cáustica</h3>
-                            <p>Produto químico de múltiplas aplicações industriais.</p>
-                            <div class="produto-tags">
-                                <span class="tag">Múltiplo</span>
-                                <span class="tag">Industrial</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="produto-card">
-                    <a href="produto-polimeros.html" style="text-decoration: none; color: inherit; display: block; height: 100%;">
-                    <div class="produto-imagem"><img src="images/Polimeros.png" /></div>
-                    <div class="produto-info">
-                        <h3>Polímeros Aniônicos, Catiônicos e Não-Iônicos</h3>
-                        <p>Floculantes de alta performance para potabilização e tratamento.</p>
-                        <div class="produto-tags">
-                            <span class="tag">Floculação</span>
-                            <span class="tag">Premium</span>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-    <!-- BOTAO VER TODOS -->
-                <div style="grid-column: 1 / -1; text-align: center; padding: 2rem 0;">
-                    <a href="produtos.html" class="btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem;">
-                        Ver Todos os Produtos
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- DIFERENCIAIS SECTION -->
     <section class="diferenciais" id="diferenciais">
         <div class="container">
             <div class="diferenciais-content">
                 <div class="diferenciais-texto">
-                    <h2>Por que <span>Chieti</span>?</h2>
-                    <ul class="diferenciais-lista">
-                        <li><strong>Profissionalismo:</strong> Equipe especializada com vasta experiência no setor</li>
-                        <li><strong>Produtos de Qualidade:</strong> Formulações otimizadas para melhor performance</li>
-                        <li><strong>Suporte Técnico:</strong> Acompanhamento personalizado para cada aplicação</li>
-                        <li><strong>Inovação Contínua:</strong> Desenvolvimento de soluções específicas</li>
-                        <li><strong>Pontualidade:</strong> Entrega confiável e logística otimizada</li>
-                        <li><strong>Conformidade:</strong> Produtos alinhados com normas regulatórias</li>
-                    </ul>
+                    <h2>Por que escolher a <span>Chieti</span>?</h2>
+                    <p class="diferenciais-subtitulo">
+                        Combinamos rigor científico, suporte técnico especializado e soluções personalizadas para
+                        otimizar os processos químicos e a conformidade ambiental de sua empresa.
+                    </p>
+                    <div class="diferenciais-grid">
+                        <!-- Card 1: Profissionalismo -->
+                        <div class="diferencial-card">
+                            <div class="diferencial-icone">🔬</div>
+                            <h3 class="diferencial-titulo">Profissionalismo</h3>
+                            <p class="diferencial-descricao">Equipe especializada com vasta experiência prática e
+                                teórica no setor químico industrial.</p>
+                        </div>
+                        <!-- Card 2: Produtos de Qualidade -->
+                        <div class="diferencial-card">
+                            <div class="diferencial-icone">⚗️</div>
+                            <h3 class="diferencial-titulo">Produtos de Qualidade</h3>
+                            <p class="diferencial-descricao">Formulações otimizadas sob rígido controle de qualidade
+                                para garantir a melhor performance.</p>
+                        </div>
+                        <!-- Card 3: Suporte Técnico -->
+                        <div class="diferencial-card">
+                            <div class="diferencial-icone">🛠️</div>
+                            <h3 class="diferencial-titulo">Suporte Técnico</h3>
+                            <p class="diferencial-descricao">Acompanhamento personalizado e consultoria técnica
+                                especializada para cada tipo de aplicação.</p>
+                        </div>
+                        <!-- Card 4: Inovação Contínua -->
+                        <div class="diferencial-card">
+                            <div class="diferencial-icone">💡</div>
+                            <h3 class="diferencial-titulo">Inovação Contínua</h3>
+                            <p class="diferencial-descricao">Pesquisa e desenvolvimento contínuos focado no
+                                desenvolvimento de soluções sob medida.</p>
+                        </div>
+                        <!-- Card 5: Pontualidade -->
+                        <div class="diferencial-card">
+                            <div class="diferencial-icone">🚚</div>
+                            <h3 class="diferencial-titulo">Pontualidade</h3>
+                            <p class="diferencial-descricao">Logística estruturada e eficiente que assegura entregas
+                                ágeis e pontuais em toda a região.</p>
+                        </div>
+                        <!-- Card 6: Conformidade -->
+                        <div class="diferencial-card">
+                            <div class="diferencial-icone">✅</div>
+                            <h3 class="diferencial-titulo">Conformidade</h3>
+                            <p class="diferencial-descricao">Produtos rigorosamente alinhados com todas as normas
+                                regulatórias e legislações ambientais vigentes.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="diferenciais-imagem">
-                    🎯
+                <div class="why-chieti__image">
+                    <img src="images/chieti-liquidos.png"
+                        alt="Soluções da Chieti Química" />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- INDICADORES SECTION -->
+    <!-- INDICADORES SECTION ===== -->
     <section class="indicadores">
         <div class="container">
             <div class="indicadores-grid">
                 <div class="indicador-item">
-                    <h3>98%</h3>
+                    <h3 class="count-up" data-target="98" data-suffix="%">0%</h3>
                     <p>Clientes Satisfeitos</p>
                 </div>
                 <div class="indicador-item">
-                    <h3>95%</h3>
+                    <h3 class="count-up" data-target="95" data-suffix="%">0%</h3>
                     <p>Projetos Concluídos</p>
                 </div>
                 <div class="indicador-item">
-                    <h3>90%</h3>
+                    <h3 class="count-up" data-target="90" data-suffix="%">0%</h3>
                     <p>Retorno de Clientes</p>
                 </div>
                 <div class="indicador-item">
@@ -763,37 +1511,46 @@
     <!-- SETORES SECTION -->
     <section class="setores" id="setores">
         <div class="container">
-            <h2 class="section-title">Setores que <span>Atendemos</span></h2>
-            <div class="setores-grid">
-                <div class="setor-item">
-                    <h3>🏭 Indústria Alimentícia</h3>
-                    <p>Tratamento de água para bebidas, processamento e limpeza industrial.</p>
-                </div>
-                <div class="setor-item">
-                    <h3>🔧 Indústria de Papel e Celulose</h3>
-                    <p>Soluções especializadas para tratamento de efluentes e processos.</p>
-                </div>
-                <div class="setor-item">
-                    <h3>🏗️ Construção e Obras</h3>
-                    <p>Produtos para tratamento de água em canteiros e estações de trabalho.</p>
-                </div>
-                <div class="setor-item">
-                    <h3>💨 Gestão Ambiental</h3>
-                    <p>Mascarante de odor e produtos para conformidade ambiental.</p>
-                </div>
-                <div class="setor-item">
-                    <h3>⚡ Energia e Utilidades</h3>
-                    <p>Tratamento de água para caldeiras, torres e chillers.</p>
-                </div>
-                <div class="setor-item">
-                    <h3>🌿 Biológicos e ETE</h3>
-                    <p>Produtos para estações de tratamento biológico de efluentes.</p>
-                </div>
-                <div class="setor-item">
-                    <h3>♨️ Operação de Caldeira</h3>
-                    <p>Terceirização de mão de obra para operação de caldeiras.</p>
+            <div class="setores-header">
+                <h2>Setores que <span>Atendemos</span></h2>
+                <div class="setores-controls">
+                    <button class="carousel-btn" id="prevSetor" aria-label="Anterior">←</button>
+                    <button class="carousel-btn" id="nextSetor" aria-label="Próximo">→</button>
                 </div>
             </div>
+            <div class="setores-carousel-container">
+                <div class="setores-carousel-track" id="setoresTrack">
+                    <div class="setor-card">
+                        <h3>Indústria Alimentícia</h3>
+                        <p>Tratamento de água para bebidas, processamento e limpeza industrial.</p>
+                    </div>
+                    <div class="setor-card">
+                        <h3>Indústria de Papel e Celulose</h3>
+                        <p>Soluções especializadas para tratamento de efluentes e processos.</p>
+                    </div>
+                    <div class="setor-card">
+                        <h3>Construção e Obras</h3>
+                        <p>Produtos para tratamento de água em canteiros e estações de trabalho.</p>
+                    </div>
+                    <div class="setor-card">
+                        <h3>Gestão Ambiental</h3>
+                        <p>Mascarante de odor e produtos para conformidade ambiental.</p>
+                    </div>
+                    <div class="setor-card">
+                        <h3>Energia e Utilidades</h3>
+                        <p>Tratamento de água para caldeiras, torres e chillers.</p>
+                    </div>
+                    <div class="setor-card">
+                        <h3>Biológicos e ETE</h3>
+                        <p>Produtos para estações de tratamento biológico de efluentes.</p>
+                    </div>
+                    <div class="setor-card">
+                        <h3>Operação de Caldeira</h3>
+                        <p>Terceirização de mão de obra para operação de caldeiras e tratamento de água.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
         </div>
     </section>
 
@@ -802,12 +1559,10 @@
         <div class="container">
             <div class="formulario-container">
                 <h2>Entre em <span>Contato</span></h2>
-                <p>Preencha o formulário abaixo e nossos especialistas entrarão em contato para conversar sobre sua necessidade.</p>
+                <p>Preencha o formulário abaixo e nossos especialistas entrarão em contato para conversar sobre sua
+                    necessidade.</p>
 
-                <form id="contatoForm"
-                action="https://formspree.io/f/xzdakajy"
-                 method="POST"
-                >
+                <form id="contatoForm" action="https://formspree.io/f/xzdakajy" method="POST">
                     <div class="form-group">
                         <label for="nome">Nome Completo *</label>
                         <input type="text" id="nome" name="nome" required>
@@ -835,7 +1590,9 @@
 
                     <div class="form-buttons">
                         <button type="submit" class="btn-primary">Enviar Mensagem</button>
-                        <a href="https://wa.me/5515997961818?text=Olá! Gostaria de conhecer mais sobre as soluções da Chieti Química." class="btn-secondary" target="_blank" style="text-align:center; display:flex; align-items:center; justify-content:center;">WhatsApp</a>
+                        <a href="https://wa.me/5515997961818?text=Olá! Gostaria de conhecer mais sobre as soluções da Chieti Química."
+                            class="btn-primary" target="_blank"
+                            style="text-align:center; display:flex; align-items:center; justify-content:center;">WhatsApp</a>
                     </div>
                 </form>
             </div>
@@ -848,7 +1605,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Chieti Química</h3>
-                    <p>Soluções químicas industriais especializadas em mascarante de odor e tratamento de água.</p>
+                    <p>Soluções químicas industriais especializadas em mascarante de odor, tratamento de água e serviços
+                        de gestão ambiental.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Contato</h3>
@@ -856,6 +1614,7 @@
                     <p>📧 contato@chietiquimica.com.br</p>
                     <p>📍 Araçoiaba da Serra, São Paulo</p>
                 </div>
+
                 <div class="footer-section">
                     <h3>Links Rápidos</h3>
                     <a href="produtos.html">Produtos</a>
@@ -864,22 +1623,46 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Chieti Química - Todos os direitos reservados | Desenvolvido com foco em conversão</p>
+                <p>&copy; 2026 Chieti Química - Todos os direitos reservados</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Validação e Envio do Formulário
-       
+    <!-- SEGMENTED WHATSAPP WIDGET -->
+    <div class="whatsapp-widget">
+        <div class="whatsapp-btn" onclick="toggleWhatsApp()">💬</div>
+        <div class="whatsapp-card" id="whatsappCard">
+            <div class="whatsapp-card-header">
+                <div class="whatsapp-avatar">🧪</div>
+                <div class="whatsapp-header-text">
+                    <h4>Atendimento Chieti Química</h4>
+                    <p>Olá! Selecione como prefere falar conosco:</p>
+                </div>
+                <div class="whatsapp-close" onclick="closeWhatsApp(event)">✕</div>
+            </div>
+            <div class="whatsapp-card-body">
+                <a href="https://wa.me/5515997961818?text=Olá! Gostaria de solicitar um orçamento para os produtos da Chieti Química."
+                    class="whatsapp-option" target="_blank" onclick="closeWhatsApp(event)">
+                    <span class="whatsapp-option-icon">🛒</span>
+                    <span>Solicitar Orçamento de Produtos</span>
+                </a>
+                <a href="https://wa.me/5515997961818?text=Olá! Gostaria de falar com um técnico sobre os serviços de operação de caldeiras, gestão de ETE ou consultoria ambiental."
+                    class="whatsapp-option" target="_blank" onclick="closeWhatsApp(event)">
+                    <span class="whatsapp-option-icon">👨‍🔧</span>
+                    <span>Falar com Técnico (Operação/Consultoria)</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
+    <script>
         // Animação de scroll suave para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if(target) {
-                    target.scrollIntoView({behavior: 'smooth'});
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
@@ -890,9 +1673,9 @@
             rootMargin: '0px 0px -100px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
-                if(entry.isIntersecting) {
+                if (entry.isIntersecting) {
                     entry.target.classList.add('fade-in');
                     observer.unobserve(entry.target);
                 }
@@ -900,9 +1683,140 @@
         }, observerOptions);
 
         // Aplicar observador a cards e seções
-        document.querySelectorAll('.produto-card, .setor-item, .indicador-item').forEach(el => {
+        document.querySelectorAll('.produto-card, .setor-card, .indicador-item, .diferencial-card').forEach(el => {
             observer.observe(el);
         });
+
+        // Animação de contagem progressiva para os indicadores
+        const countUpObserver = new IntersectionObserver(function (entries, observerInstance) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const targetEl = entry.target;
+                    const endVal = parseInt(targetEl.getAttribute('data-target'), 10);
+                    const suffix = targetEl.getAttribute('data-suffix') || '';
+                    let startVal = 0;
+                    const duration = 1500; // 1.5s
+                    const startTime = performance.now();
+
+                    function updateNumber(now) {
+                        const elapsed = now - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        // Efeito de easing outQuad
+                        const easeProgress = progress * (2 - progress);
+                        const currentVal = Math.floor(easeProgress * endVal);
+
+                        targetEl.textContent = currentVal + suffix;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateNumber);
+                        } else {
+                            targetEl.textContent = endVal + suffix;
+                        }
+                    }
+
+                    requestAnimationFrame(updateNumber);
+                    observerInstance.unobserve(targetEl);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Inicializar observador para cada número animável
+        document.querySelectorAll('.count-up').forEach(el => {
+            countUpObserver.observe(el);
+        });
+
+        // Carrossel da seção Setores
+        const track = document.getElementById('setoresTrack');
+        const prevBtn = document.getElementById('prevSetor');
+        const nextBtn = document.getElementById('nextSetor');
+        const dotsContainer = document.getElementById('carouselDots');
+        const cards = Array.from(track.children);
+
+        let currentIndex = 0;
+
+        function getVisibleCards() {
+            if (window.innerWidth <= 600) return 1;
+            if (window.innerWidth <= 900) return 2;
+            return 3;
+        }
+
+        function maxIndex() {
+            return Math.max(0, cards.length - getVisibleCards());
+        }
+
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            const totalDots = maxIndex() + 1;
+            if (totalDots <= 1) return;
+            for (let i = 0; i < totalDots; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('carousel-dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateCarousel();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateCarousel() {
+            const visibleCards = getVisibleCards();
+            const maxIdx = maxIndex();
+            if (currentIndex > maxIdx) currentIndex = maxIdx;
+
+            // Calculate slide width and offset
+            if (cards.length > 0) {
+                const cardWidth = cards[0].offsetWidth;
+                const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+
+                const offset = currentIndex * (cardWidth + gap);
+                track.style.transform = `translateX(-${offset}px)`;
+
+                // Update disabled status of buttons
+                prevBtn.classList.toggle('disabled', currentIndex === 0);
+                nextBtn.classList.toggle('disabled', currentIndex === maxIdx);
+
+                // Update dots
+                const dots = Array.from(dotsContainer.children);
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentIndex);
+                });
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < maxIndex()) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            createDots();
+            updateCarousel();
+        });
+
+        // Initialize Carousel
+        createDots();
+        updateCarousel();
+
+        function toggleWhatsApp() {
+            const card = document.getElementById('whatsappCard');
+            card.style.display = card.style.display === 'block' ? 'none' : 'block';
+        }
+        function closeWhatsApp(e) {
+            e.stopPropagation();
+            document.getElementById('whatsappCard').style.display = 'none';
+        }
     </script>
 </body>
+
 </html>
