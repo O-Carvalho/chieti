@@ -1122,7 +1122,7 @@
                 <div class="footer-section">
                     <h3>Chieti Química</h3>
                     <p>Soluções químicas industriais especializadas em mascarante de odor, tratamento de água e serviços
-                        ambientais.</p>
+                        de gestão ambiental.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Contato</h3>
@@ -1130,16 +1130,11 @@
                     <p>📧 contato@chietiquimica.com.br</p>
                     <p>📍 Araçoiaba da Serra, São Paulo</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Nossa Performance</h3>
-                    <p>⭐ <strong>98% de Satisfação</strong> dos clientes atendidos.</p>
-                    <p>✅ <strong>95% de Projetos Concluídos</strong> com sucesso.</p>
-                    <p>📞 <strong>Suporte Técnico 24/7</strong> para sua tranquilidade.</p>
-                </div>
+
                 <div class="footer-section">
                     <h3>Links Rápidos</h3>
-                    <a href="index.html">Home</a>
                     <a href="produtos.html">Produtos</a>
+                    <a href="#setores">Setores</a>
                     <a href="#contato">Contato</a>
                 </div>
             </div>
@@ -1147,45 +1142,45 @@
                 <p>&copy; 2026 Chieti Química - Todos os direitos reservados</p>
             </div>
         </div>
-        </<footer>
+    </footer>
 
-        <!-- SEGMENTED WHATSAPP WIDGET -->
-        <div class="whatsapp-widget">
-            <div class="whatsapp-btn" onclick="toggleWhatsApp()">💬</div>
-            <div class="whatsapp-card" id="whatsappCard">
-                <div class="whatsapp-card-header">
-                    <div class="whatsapp-avatar">🧪</div>
-                    <div class="whatsapp-header-text">
-                        <h4>Atendimento Chieti Química</h4>
-                        <p>Olá! Selecione como prefere falar conosco:</p>
-                    </div>
-                    <div class="whatsapp-close" onclick="closeWhatsApp(event)">✕</div>
+    <!-- SEGMENTED WHATSAPP WIDGET -->
+    <div class="whatsapp-widget">
+        <div class="whatsapp-btn" onclick="toggleWhatsApp()">💬</div>
+        <div class="whatsapp-card" id="whatsappCard">
+            <div class="whatsapp-card-header">
+                <div class="whatsapp-avatar">🧪</div>
+                <div class="whatsapp-header-text">
+                    <h4>Atendimento Chieti Química</h4>
+                    <p>Olá! Selecione como prefere falar conosco:</p>
                 </div>
-                <div class="whatsapp-card-body">
-                    <a href="https://wa.me/5515997961818?text=Olá! Gostaria de solicitar um orçamento para os produtos da Chieti Química."
-                        class="whatsapp-option" target="_blank" onclick="closeWhatsApp(event)">
-                        <span class="whatsapp-option-icon">🛒</span>
-                        <span>Solicitar Orçamento de Produtos</span>
-                    </a>
-                    <a href="https://wa.me/5515997961818?text=Olá! Gostaria de falar com um técnico sobre os serviços de operação de caldeiras, gestão de ETE ou consultoria ambiental."
-                        class="whatsapp-option" target="_blank" onclick="closeWhatsApp(event)">
-                        <span class="whatsapp-option-icon">👨‍🔧</span>
-                        <span>Falar com Técnico (Operação/Consultoria)</span>
-                    </a>
-                </div>
+                <div class="whatsapp-close" onclick="closeWhatsApp(event)">✕</div>
+            </div>
+            <div class="whatsapp-card-body">
+                <a href="https://wa.me/5515997961818?text=Olá! Gostaria de solicitar um orçamento para os produtos da Chieti Química."
+                    class="whatsapp-option" target="_blank" onclick="closeWhatsApp(event)">
+                    <span class="whatsapp-option-icon">🛒</span>
+                    <span>Solicitar Orçamento de Produtos</span>
+                </a>
+                <a href="https://wa.me/5515997961818?text=Olá! Gostaria de falar com um técnico sobre os serviços de operação de caldeiras, gestão de ETE ou consultoria ambiental."
+                    class="whatsapp-option" target="_blank" onclick="closeWhatsApp(event)">
+                    <span class="whatsapp-option-icon">👨‍🔧</span>
+                    <span>Falar com Técnico (Operação/Consultoria)</span>
+                </a>
             </div>
         </div>
+    </div>
 
-        <script>
-            function toggleWhatsApp() {
-                const card = document.getElementById('whatsappCard');
-                card.style.display = card.style.display === 'block' ? 'none' : 'block';
-            }
-            function closeWhatsApp(e) {
-                e.stopPropagation();
-                document.getElementById('whatsappCard').style.display = 'none';
-            }
-        </script>
+    <script>
+        function toggleWhatsApp() {
+            const card = document.getElementById('whatsappCard');
+            card.style.display = card.style.display === 'block' ? 'none' : 'block';
+        }
+        function closeWhatsApp(e) {
+            e.stopPropagation();
+            document.getElementById('whatsappCard').style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>
